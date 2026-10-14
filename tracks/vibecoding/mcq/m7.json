@@ -1,0 +1,94 @@
+{
+  "module": "vibe-m7-debugging-with-ai",
+  "track": "vibecoding",
+  "items": [
+    {
+      "id": "vibe-m7-01",
+      "concept": "error-is-a-clue",
+      "type": "mcq",
+      "level": "all",
+      "q": "An error message is best thought of as:",
+      "options": [
+        "A precise clue about what failed and usually where",
+        "Random noise you should ignore",
+        "A scolding that means you're bad at this",
+        "A sign you should delete everything and start over"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "An error tells you what went wrong and often the file and line — the most useful free information while building.",
+        "wrong": "It's not a judgment, noise, or a reason to restart; it's a readable pointer at the problem."
+      }
+    },
+    {
+      "id": "vibe-m7-02",
+      "concept": "fix-with-context",
+      "type": "mcq",
+      "level": "all",
+      "q": "What's the most reliable way to get the AI to fix a bug?",
+      "options": [
+        "Tell it to try harder",
+        "Give the exact error + the relevant code/file + what you did + what you expected instead",
+        "Say 'it's broken, fix it'",
+        "Ask it repeatedly until it works"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "The exact error plus the code and expected behavior narrows the model to your real problem, like a good plumber callout.",
+        "wrong": "Vague or repeated demands make it pattern-match to generic, often irrelevant fixes."
+      }
+    },
+    {
+      "id": "vibe-m7-03",
+      "concept": "break-the-loop",
+      "type": "mcq",
+      "level": "some",
+      "q": "The AI keeps trying nearly identical fixes and the same error keeps coming back. Best move?",
+      "options": [
+        "Keep letting it guess — the next try might work",
+        "Stop and add real evidence: roll back to a known-good commit, read the actual output or add a log, then reframe",
+        "Delete the whole project and start over",
+        "Accept the bug and move on"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "A loop means the model lacks information; the cure is evidence (a log, a reproduction) or a rollback, not more guesses.",
+        "wrong": "More guessing, nuking the project, or giving up all skip the real fix: give it something true to work from."
+      }
+    },
+    {
+      "id": "vibe-m7-04",
+      "concept": "fix-with-context",
+      "type": "mcq",
+      "level": "some",
+      "q": "Why does pasting the actual error and code beat saying 'it's broken'?",
+      "options": [
+        "Longer prompts are always better",
+        "It flatters the model into trying harder",
+        "It narrows the model's prediction to your specific problem instead of a generic guess",
+        "It runs the code for you"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "A vague report has many plausible continuations and few are right; the error plus code pins it to your actual bug.",
+        "wrong": "It's not about length or flattery, and pasting text doesn't execute anything — it's about precision."
+      }
+    },
+    {
+      "id": "vibe-m7-05",
+      "concept": "fix-with-context",
+      "type": "short",
+      "level": "all",
+      "q": "Turn 'my app is broken' into a good fix request. What would you include?",
+      "rubric": [
+        "The exact error text, copied not paraphrased",
+        "The relevant code/file (and ideally the steps that triggered it)",
+        "What you expected to happen instead"
+      ],
+      "explain": {
+        "right": "Strong answers supply the exact error, the relevant code and trigger steps, and the expected-vs-actual behavior.",
+        "wrong": "A weak answer just adds 'please' or more adjectives without the concrete error and context."
+      }
+    }
+  ]
+}

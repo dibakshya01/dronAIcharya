@@ -1,0 +1,94 @@
+{
+  "module": "py-m7-files-and-errors",
+  "track": "python",
+  "items": [
+    {
+      "id": "py-m7-01",
+      "concept": "with-open",
+      "type": "mcq",
+      "level": "all",
+      "q": "Why is `with open(\"tasks.txt\") as f:` preferred over plain `f = open(\"tasks.txt\")`?",
+      "options": [
+        "The `with` block closes the file automatically when done, even if an error happens",
+        "It is the only way to read a file",
+        "It makes the file load faster",
+        "It encrypts the file"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "A with block guarantees the file is closed when the block ends (or errors), so you never leak an open file handle.",
+        "wrong": "It doesn't change speed or encrypt anything, and files can be opened without `with` (you'd just have to close them yourself)."
+      }
+    },
+    {
+      "id": "py-m7-02",
+      "concept": "write-mode-truncates",
+      "type": "mcq",
+      "level": "confident",
+      "q": "A file `log.txt` has data in it. You run `open(\"log.txt\", \"w\")`. What happens to the existing contents?",
+      "options": [
+        "They're backed up automatically",
+        "They're erased — mode \"w\" empties the file before writing; use \"a\" to append instead",
+        "Nothing can happen until you write",
+        "They're kept and new writes go after them"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Opening in \"w\" truncates the file immediately, so the old contents are gone; \"a\" (append) adds without erasing.",
+        "wrong": "\"w\" does not keep or back up old contents; the erase happens on open, before any write."
+      }
+    },
+    {
+      "id": "py-m7-03",
+      "concept": "specific-except",
+      "type": "mcq",
+      "level": "some",
+      "q": "Why is `except FileNotFoundError:` better than a bare `except:` when loading a file that might not exist?",
+      "options": [
+        "Bare except is required by Python",
+        "They behave identically",
+        "A bare except is faster",
+        "A bare except catches every error — including typos and Ctrl-C — and hides real bugs; naming the exception handles only the case you expect"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Catching the specific exception handles the expected problem and lets unexpected errors surface instead of being silently swallowed.",
+        "wrong": "They don't behave the same; a bare except is a known anti-pattern because it masks bugs, and it is never required."
+      }
+    },
+    {
+      "id": "py-m7-04",
+      "concept": "exceptions-as-signals",
+      "type": "mcq",
+      "level": "some",
+      "q": "When reading a traceback to find why your program crashed, where is the most directly relevant line usually found?",
+      "options": [
+        "At the very top",
+        "In the middle only",
+        "Tracebacks never point to a line",
+        "At the bottom — the last lines show the exception type/message and the deepest call where it failed"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "An exception is a signal: the bottom of the traceback names the error type, its message, and the innermost line that triggered it.",
+        "wrong": "The top shows the outer call chain; the actionable detail (type + failing line) is at the bottom."
+      }
+    },
+    {
+      "id": "py-m7-05",
+      "concept": "exceptions-as-signals",
+      "type": "short",
+      "level": "confident",
+      "q": "In one or two sentences, explain why raising a clear exception can be better than silently ignoring a bad input.",
+      "rubric": [
+        "An exception is an explicit signal that something is wrong, with a type and message",
+        "Silently ignoring hides the problem and can cause worse, harder-to-find bugs later",
+        "The caller can catch and handle a raised exception or see it clearly during development"
+      ],
+      "explain": {
+        "right": "Good answers frame exceptions as honest signals that surface problems early, versus silent failures that hide them.",
+        "wrong": "A weak answer says 'exceptions are bad / always catch them' — the point is that a loud, specific failure beats a hidden one."
+      }
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "module": "cs-m4-arrays-and-lists",
+  "track": "cs-from-scratch",
+  "items": [
+    {
+      "id": "cs-m4-01",
+      "concept": "array-indexing",
+      "type": "mcq",
+      "level": "all",
+      "q": "Why is reading array[500] just as fast as reading array[0] in an array?",
+      "options": [
+        "The computer is just very fast, so order doesn't matter",
+        "Arrays secretly keep a copy of every element at position 0",
+        "It isn't — array[500] must scan past the first 500 elements",
+        "Elements are stored contiguously and the same size, so the location is computed directly (start + index x size)"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Contiguous, equal-size elements let the computer calculate the exact address and jump there, so indexing is O(1) regardless of position.",
+        "wrong": "Indexing doesn't scan earlier elements, and there's no hidden copy; the address math is what makes it constant time."
+      }
+    },
+    {
+      "id": "cs-m4-02",
+      "concept": "dynamic-array-cost",
+      "type": "mcq",
+      "level": "some",
+      "q": "In a Python list (a dynamic array), which operation is O(n) because elements must shift?",
+      "options": [
+        "Appending to the end (amortized)",
+        "Inserting at the front with insert(0, x)",
+        "Reading an element by index",
+        "Checking the list's length"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Inserting at the front forces every later element to shift over to stay contiguous, which is O(n).",
+        "wrong": "Index reads and length checks are O(1), and appending to the end is amortized O(1) (no shifting needed)."
+      }
+    },
+    {
+      "id": "cs-m4-03",
+      "concept": "array-vs-linked-list",
+      "type": "mcq",
+      "level": "some",
+      "q": "Compared with an array, a linked list trades which costs?",
+      "options": [
+        "Faster indexing but slower appends",
+        "It is strictly better at everything",
+        "It uses less memory and is more cache-friendly",
+        "Cheaper insert/delete at a known node (O(1)) but slower indexing (O(n), you must walk the chain)"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Linked-list nodes splice cheaply once you're there, but reaching the i-th element means following links from the start, so indexing is O(n).",
+        "wrong": "It's not strictly better; it uses more memory (pointers) and is less cache-friendly, and indexing is its weak point."
+      }
+    },
+    {
+      "id": "cs-m4-04",
+      "concept": "dynamic-array-cost",
+      "type": "mcq",
+      "level": "confident",
+      "q": "A Python list (or JavaScript array) is implemented as which structure?",
+      "options": [
+        "A dynamic array (a resizable contiguous block)",
+        "A hash map",
+        "A binary tree",
+        "A linked list"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Python lists and JS arrays are dynamic arrays: contiguous blocks that grow by copying into a larger block, which is why indexing and append are fast.",
+        "wrong": "They're not linked lists, maps, or trees; assuming 'list' means linked list is a common mix-up that predicts the wrong costs."
+      }
+    },
+    {
+      "id": "cs-m4-05",
+      "concept": "array-vs-linked-list",
+      "type": "short",
+      "level": "some",
+      "q": "You need a collection where you mostly append and frequently read by index. Array-style list or linked list, and why?",
+      "rubric": [
+        "Chooses an array/dynamic array (Python list)",
+        "Justifies with O(1) index access (and amortized O(1) append)",
+        "Notes the linked list's O(n) indexing makes it a poor fit here"
+      ],
+      "explain": {
+        "right": "Strong answers pick the dynamic array for O(1) indexing and cheap appends, and note linked-list indexing is O(n).",
+        "wrong": "A weak answer picks the linked list for 'flexibility' without accounting for the O(n) index cost that dominates this workload."
+      }
+    }
+  ]
+}

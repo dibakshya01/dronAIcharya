@@ -1,0 +1,78 @@
+{
+  "module": "py-m6-strings-and-text",
+  "track": "python",
+  "items": [
+    {
+      "id": "py-m6-01",
+      "concept": "slicing-bounds",
+      "type": "mcq",
+      "level": "all",
+      "q": "Given `s = \"hello\"`, what is `s[1:4]`?",
+      "options": [
+        "\"ello\"",
+        "\"hel\"",
+        "\"hell\"",
+        "\"ell\""
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "A slice starts at the first index and stops before the second, so s[1:4] takes characters at 1, 2, 3 -> \"ell\".",
+        "wrong": "It doesn't include index 4 or index 0; the 'stop before the end index' rule is the same off-by-one as range."
+      }
+    },
+    {
+      "id": "py-m6-02",
+      "concept": "strings-immutable",
+      "type": "mcq",
+      "level": "confident",
+      "q": "`name = \"  Sam  \"`. A learner writes `name.strip()` on its own line, then prints `name`. What prints?",
+      "options": [
+        "\"  Sam  \" — strings are immutable, so .strip() returns a new trimmed string and the original is unchanged",
+        "\"Sam\"",
+        "An error",
+        "\"\" (empty)"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Strings can't be changed in place; .strip() builds a new string you must capture: name = name.strip().",
+        "wrong": "Calling .strip() without reassigning throws the result away; name still holds the original with its spaces."
+      }
+    },
+    {
+      "id": "py-m6-03",
+      "concept": "f-strings",
+      "type": "mcq",
+      "level": "all",
+      "q": "With `city = \"London\"` and `temp = 12`, which produces the text `London: 12C`?",
+      "options": [
+        "f\"{city}: {temp}C\"",
+        "\"city: tempC\"",
+        "f\"city: tempC\"",
+        "\"{city}: {temp}C\""
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "An f-string (prefix f) evaluates each {expression} and drops its value in, so f\"{city}: {temp}C\" gives London: 12C.",
+        "wrong": "Without the f prefix the braces stay literal, and plain words like city/temp aren't substituted at all."
+      }
+    },
+    {
+      "id": "py-m6-04",
+      "concept": "string-methods",
+      "type": "mcq",
+      "level": "some",
+      "q": "What does `\"add buy milk\".split()` return?",
+      "options": [
+        "\"add buy milk\"",
+        "[\"add buy milk\"]",
+        "(\"add\", \"buy\", \"milk\")",
+        "[\"add\", \"buy\", \"milk\"]"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": ".split() with no argument breaks the string on whitespace into a list of words.",
+        "wrong": "It returns a list (not a string or tuple), and splits into separate words rather than one-item list."
+      }
+    }
+  ]
+}

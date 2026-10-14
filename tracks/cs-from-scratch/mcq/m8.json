@@ -1,0 +1,94 @@
+{
+  "module": "cs-m8-os-foundations",
+  "track": "cs-from-scratch",
+  "items": [
+    {
+      "id": "cs-m8-01",
+      "concept": "what-os-does",
+      "type": "mcq",
+      "level": "all",
+      "q": "Which is a core job of the operating system?",
+      "options": [
+        "Sharing the CPU and memory among programs and keeping them isolated from each other",
+        "Designing the CPU hardware",
+        "Writing your application's business logic for you",
+        "Choosing which websites you visit"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "The OS schedules the CPU, manages memory and files, drives devices, and isolates programs so one can't trample another.",
+        "wrong": "It doesn't write your app, build the hardware, or pick your browsing; it manages and protects shared resources."
+      }
+    },
+    {
+      "id": "cs-m8-02",
+      "concept": "process-vs-thread",
+      "type": "mcq",
+      "level": "all",
+      "q": "What's the key difference between a process and a thread?",
+      "options": [
+        "They are two words for the same thing",
+        "Threads have isolated memory; processes share everything",
+        "Processes are faster versions of threads",
+        "Each process has its own isolated memory; threads within one process share that process's memory"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Processes are isolated (separate memory); threads live inside a process and share its memory, which is powerful but risks races.",
+        "wrong": "The isolation is reversed in the other options; processes and threads are not the same, nor is one just a faster version."
+      }
+    },
+    {
+      "id": "cs-m8-03",
+      "concept": "concurrency-vs-parallelism",
+      "type": "mcq",
+      "level": "some",
+      "q": "A single-core computer appears to run many apps 'at once'. This is best described as:",
+      "options": [
+        "True parallelism",
+        "A hardware defect",
+        "Concurrency — the OS rapidly switches between tasks so they all make progress",
+        "Impossible; one core can only ever run one app total"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "One core juggles tasks by context-switching fast (concurrency); true parallelism (literally simultaneous) needs multiple cores.",
+        "wrong": "A single core isn't doing things simultaneously, but it can interleave many tasks; that's normal, not a defect."
+      }
+    },
+    {
+      "id": "cs-m8-04",
+      "concept": "concurrency-vs-parallelism",
+      "type": "mcq",
+      "level": "some",
+      "q": "Concurrency and parallelism differ how?",
+      "options": [
+        "They're identical terms",
+        "Concurrency needs more cores than parallelism",
+        "Concurrency is dealing with many tasks by interleaving them; parallelism is actually executing multiple at the same instant (needs multiple cores)",
+        "Parallelism only works on a single core"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "Concurrency is about structure (juggling many in-progress tasks); parallelism is about execution (literally simultaneous), which requires multiple cores.",
+        "wrong": "They aren't synonyms; it's parallelism that needs multiple cores, and concurrency can happen on a single core."
+      }
+    },
+    {
+      "id": "cs-m8-05",
+      "concept": "process-vs-thread",
+      "type": "short",
+      "level": "confident",
+      "q": "Why can sharing memory between threads cause bugs that separate processes avoid?",
+      "rubric": [
+        "Threads in one process share the same memory/data",
+        "Two threads touching the same data at once can interleave badly (a race condition), corrupting it",
+        "Separate processes have isolated memory, so they don't share state to corrupt (and need explicit communication instead)"
+      ],
+      "explain": {
+        "right": "Strong answers tie shared memory to race conditions when threads interleave on the same data, and note process isolation avoids that shared-state hazard.",
+        "wrong": "A weak answer says 'threads are just buggy' without the shared-memory/race-condition mechanism."
+      }
+    }
+  ]
+}

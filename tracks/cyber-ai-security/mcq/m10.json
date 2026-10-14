@@ -1,0 +1,94 @@
+{
+  "module": "sec-m10-hardening-and-guardrails",
+  "track": "cyber-ai-security",
+  "items": [
+    {
+      "id": "sec-m10-01",
+      "concept": "hardening-checklist",
+      "type": "mcq",
+      "level": "all",
+      "q": "What makes a hardening checklist actually useful?",
+      "options": [
+        "It covers every OWASP item in full detail regardless of whether they apply",
+        "It's specific and prioritized: each item names the risk (with its OWASP tag), where it lives in the code, the fix, and done/todo — ranked by blast radius",
+        "It only lists things you've already fixed",
+        "It says 'be secure' at the top and lists every possible threat equally"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Specific, prioritized, tied to your actual code, and ranked by what you'd lose — that's a checklist you can act on and hand to someone.",
+        "wrong": "Vague goals, only-fixed items, or exhaustive irrelevant detail don't help you spend limited effort where it matters."
+      }
+    },
+    {
+      "id": "sec-m10-02",
+      "concept": "factual-hook-text",
+      "type": "mcq",
+      "level": "some",
+      "q": "dronAIcharya's hooks inject their text as factual descriptions ('a guided journey is active; persona X') rather than as imperative system commands. Why?",
+      "options": [
+        "Factual phrasing keeps the guardrail effective without reading like the very injection attack a model is trained to resist, keeping the data/instruction boundary clean",
+        "To save characters",
+        "To make the output look nicer in logs",
+        "Because commands are not allowed in shell scripts"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Phrasing injected context as a description of agreed state (not as orders) respects the same data-not-instructions boundary the track teaches.",
+        "wrong": "It's not about length, shell limits, or aesthetics — it's about not mimicking an injection attack."
+      }
+    },
+    {
+      "id": "sec-m10-03",
+      "concept": "fetched-content-quarantine",
+      "type": "mcq",
+      "level": "all",
+      "q": "When dronAIcharya fetches a web page and the page contains 'ignore previous instructions,' what does it do?",
+      "options": [
+        "Stores the instruction in the journal to apply next session",
+        "Deletes the page and stops",
+        "Follows the instruction, since it came from a trusted fetch tool",
+        "Treats the fetched text as external reference data, never copies it into the contract/hooks/journal as instructions, and surfaces the suspicious line as a teaching example of prompt injection"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Fetched content is quarantined as data and shown to the learner as a prompt-injection example — exactly the behavior you'd build into your own app.",
+        "wrong": "It never obeys fetched instructions and never persists them where they'd be re-injected; that would be the attack succeeding."
+      }
+    },
+    {
+      "id": "sec-m10-04",
+      "concept": "security-is-ongoing",
+      "type": "mcq",
+      "level": "all",
+      "q": "After reviewing your app, you decide to accept one lower-priority risk for now and document why. Is that acceptable security practice?",
+      "options": [
+        "No — accepting any risk means the app is insecure and unusable",
+        "Yes, and you never need to revisit it",
+        "No — you must fix every possible risk before shipping or you've failed",
+        "Yes — 'I threat-modeled it and consciously accepted this risk, with a reason' is a legitimate, professional decision; 'I never looked' is not"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Every real project carries accepted risks; the professional move is a conscious, documented decision — and re-reviewing when you add new surface.",
+        "wrong": "Fixing literally everything isn't realistic, accepted risk isn't the same as negligence, and you do revisit as the app changes."
+      }
+    },
+    {
+      "id": "sec-m10-05",
+      "concept": "recurring-principle",
+      "type": "short",
+      "level": "some",
+      "q": "In one or two sentences, state the single recurring principle this track applied to keys, tools, data policies, and model input/output.",
+      "rubric": [
+        "Captures 'grant the minimum / least privilege' and/or 'deny by default'",
+        "Captures 'enforce at the lowest layer' and/or 'keep a human on consequential actions'",
+        "Captures 'treat external/fetched/tool content as data, not instructions'"
+      ],
+      "explain": {
+        "right": "A strong answer ties it together: deny by default, grant the minimum, enforce low, treat external content as data, and keep a human on the actions that matter.",
+        "wrong": "A weak answer names only one layer (e.g. 'use HTTPS') and misses that it's one instinct applied everywhere."
+      }
+    }
+  ]
+}

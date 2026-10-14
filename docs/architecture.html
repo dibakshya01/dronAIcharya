@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Architecture — how dronAIcharya is built</title>
+  <meta name="description" content="The plugin, skills, agents, guardrail hooks, MCP backend, and state model behind dronAIcharya — plus the honest tradeoffs, summarized accurately from the build plan.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Architecture — how dronAIcharya is built">
+  <meta property="og:description" content="Plugin, skills, agents, guardrail hooks, MCP backend, state model, and the honest tradeoffs.">
+  <meta property="og:image" content="assets/social-card.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>(function(){try{var t=localStorage.getItem('dron-theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+  <style>
+    /* page-scoped diagram styling (uses the shared tokens) */
+    .diagram { display:grid; gap:14px; }
+    .dgroup { border:1px solid var(--border); border-radius:var(--radius-lg); background:var(--surface); padding:18px; box-shadow:var(--shadow-sm); }
+    .dgroup > .dlabel { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--faint); margin-bottom:12px; display:block; }
+    .dnode { border:1px solid var(--border-strong); border-radius:12px; background:var(--surface-2); padding:12px 14px; }
+    .dnode h4 { font-family:var(--font-display); font-size:.98rem; }
+    .dnode p { color:var(--muted); font-size:.84rem; margin-top:4px; }
+    .dnode.accent { border-color:var(--accent); background:var(--accent-soft); }
+    .dnode.accent h4 { color:var(--accent-ink); }
+    .drow { display:grid; gap:12px; }
+    .drow.c3 { grid-template-columns:repeat(3,1fr); }
+    .drow.c2 { grid-template-columns:repeat(2,1fr); }
+    .dnode.dashed { border-style:dashed; }
+    .darrow { text-align:center; color:var(--faint); font-size:1.2rem; line-height:1; }
+    @media (max-width:640px){ .drow.c3, .drow.c2 { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="dronAIcharya — home">
+        <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+          <circle cx="20" cy="12.5" r="7" stroke-width="2"/>
+          <circle cx="20" cy="12.5" r="2.6" stroke="none" style="fill:var(--accent)"/>
+          <path d="M5 27 C 9 21, 13 17, 17.3 13.9" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M17.3 13.9 L 13 14.6 M17.3 13.9 L 14.9 18.3" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <span>dron<span class="wm-ai">AI</span>charya</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="eli5.html">For everyone</a></li>
+        <li><a href="docs.html">Docs</a></li>
+        <li><a href="architecture.html" aria-current="page">Architecture</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-tools">
+        <a class="icon-btn" href="https://github.com/dibakshya01/dronAIcharya" target="_blank" rel="noopener" aria-label="dronAIcharya on GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.57.1.78-.25.78-.55v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.48.11-3.08 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.6.23 2.78.11 3.08.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14v3.17c0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5Z"/></svg>
+        </button>
+        <button class="icon-btn nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="page-hero" aria-labelledby="arch-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container" style="position:relative;z-index:1;max-width:48rem">
+        <span class="eyebrow">Architecture</span>
+        <h1 id="arch-title">How it's built</h1>
+        <p class="lead">A single repo that is both a Claude Code plugin and its own marketplace. One orchestrator drives a guardrailed journey; curricula are data, assessment runs in fresh-memory subagents, and the anti-drift hooks re-anchor teaching mode across long sessions. Below is the honest version — including the tradeoffs.</p>
+      </div>
+    </section>
+
+    <!-- COMPONENT MAP -->
+    <section class="section--tight" aria-labelledby="map-h">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Component map</span>
+          <h2 id="map-h">One orchestrator, many parts</h2>
+          <p>The journey is driven by a single orchestrator (<code>start</code>, and its resumer <code>continue</code>). It reads the other capabilities as reference / data, spawns subagents for unbiased work, and persists state. Every step skill is also user-invocable, so the flow never depends on fragile skill-to-skill auto-chaining.</p>
+        </div>
+
+        <div class="diagram" data-reveal aria-label="Architecture component map">
+          <div class="dgroup">
+            <span class="dlabel">Entry</span>
+            <div class="dnode"><h4>Your project + Claude Code / Cursor</h4><p>You paste the repo link; the README greets you and hands you the install commands. You run them.</p></div>
+          </div>
+          <div class="darrow" aria-hidden="true">↓</div>
+          <div class="dgroup">
+            <span class="dlabel">Orchestrator (the engine)</span>
+            <div class="drow c3">
+              <div class="dnode accent"><h4>start</h4><p>State machine for the linear flow</p></div>
+              <div class="dnode accent"><h4>continue</h4><p>Resumes from saved state</p></div>
+              <div class="dnode accent"><h4>status</h4><p>Progress · pause · disable</p></div>
+            </div>
+          </div>
+          <div class="darrow" aria-hidden="true">↓</div>
+          <div class="dgroup">
+            <span class="dlabel">Reads as reference / data · spawns subagents</span>
+            <div class="drow c3">
+              <div class="dnode"><h4>Skills</h4><p>Teaching (<code>teach</code>, <code>eli5</code>, <code>deep-dive</code>, <code>quiz</code>, <code>under-the-hood</code>) and build/SDLC (<code>spec</code>, <code>architect</code>, <code>build-step</code>, <code>backend</code>, <code>payments</code>, <code>deploy</code>, <code>ship-github</code>).</p></div>
+              <div class="dnode"><h4>Fresh-memory subagents</h4><p>socratic-examiner (batch MCQ), code-reviewer-teacher, spec-reviewer, architect-advisor, security-auditor, content-accuracy-reviewer, research-scout.</p></div>
+              <div class="dnode"><h4>Curricula as data</h4><p>Four tracks as <code>syllabus.md</code> + modules + MCQ banks — <em>not</em> skills, so they don't crowd the skill listing budget. Plus personas and reference docs.</p></div>
+            </div>
+          </div>
+          <div class="darrow" aria-hidden="true">↓</div>
+          <div class="dgroup">
+            <span class="dlabel">Cross-cutting</span>
+            <div class="drow c3">
+              <div class="dnode"><h4>Guardrail hooks</h4><p>SessionStart · UserPromptSubmit · Stop → shell scripts. Fail-open, state-gated, jq-optional.</p></div>
+              <div class="dnode"><h4>State</h4><p>Per-project <code>./.dronacharya/</code> + global <code>profile.json</code> in <code>CLAUDE_PLUGIN_DATA</code>.</p></div>
+              <div class="dnode dashed"><h4>purple-sparrow (optional)</h4><p>MCP backend wired via <code>.mcp.json.example</code> + <code>userConfig</code>. Off by default.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GUARDRAIL MECHANISM -->
+    <section class="section section--alt" id="guardrails" aria-labelledby="guard-h">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">The guardrail mechanism</span>
+          <h2 id="guard-h">Why teaching survives a long session</h2>
+          <p>Prose in a prompt fades after compaction. Hooks re-anchor it. Three events, each a small shell script, defense-in-depth — and framed honestly as a strong nudge that <em>reduces</em> drift, never a cage.</p>
+        </div>
+        <div class="grid grid-3" data-reveal>
+          <div class="card tilt">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v4M3 5h4M6 17v4M4 19h4"/><path d="m13 3 2.3 6.2L21 11l-5.7 1.8L13 19l-2.3-6.2L5 11l5.7-1.8L13 3Z"/></svg></div>
+            <h3>SessionStart</h3>
+            <p>On <code>startup</code> / <code>resume</code> / <code>compact</code>, and only if teaching mode is on and not paused, it injects the full teaching contract, the active persona, and the current step — as factual context, re-anchoring after compaction.</p>
+          </div>
+          <div class="card tilt">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg></div>
+            <h3>UserPromptSubmit</h3>
+            <p>Injects only a short status crumb — a few hundred characters: teaching mode, persona, cadence, step, and the reminder that "pause / skip / ELI5" exist. Keeps the contract warm without a per-turn token tax.</p>
+          </div>
+          <div class="card tilt">
+            <div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9 9h6v6H9z"/></svg></div>
+            <h3>Stop</h3>
+            <p>A nudge: on a long, substantive turn that surfaced no check, it emits a <em>single</em> block (loop-guarded, so at most once) asking for a check. It respects the signals it can see — <code>paused</code>, <code>stopNudge=false</code>, the loop guard, and turns that already asked a question — and never blocks a graceful exit. The hook can't read the prompt, so a per-turn "quick-fix / skip" is honored by the model via the block's reason; to silence the nudge for a stretch, set <code>stopNudge=false</code> via <code>/dronaicharya:status</code>.</p>
+          </div>
+        </div>
+        <div class="callout mt-l" data-reveal style="max-width:52rem">
+          <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-5M12 8h.01"/></svg></span>
+          <p>Every hook script <strong>fails open</strong> (always exits cleanly), emits nothing when no journey is active in the current project, tolerates a missing <code>jq</code>, and targets under 50&nbsp;ms — so unrelated projects are untouched and nothing breaks. A required test asserts they no-op cleanly and fast in an unrelated repo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATE -->
+    <section class="section" id="state" aria-labelledby="state-h">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">State model</span>
+          <h2 id="state-h">Journey per project, mastery per person</h2>
+          <p>Split deliberately: the plan and journal belong to a project; mastery must carry across projects.</p>
+        </div>
+        <div class="grid grid-2" data-reveal>
+          <div class="card tilt">
+            <div class="tag">per-project · gitignored · no secrets</div>
+            <h3 class="mt-s" style="font-size:1.12rem"><code>./.dronacharya/</code></h3>
+            <ul class="prose" style="list-style:none;padding:0;margin-top:12px;display:grid;gap:8px;font-size:.95rem">
+              <li><code>learning-plan.md</code> — the approved BUILD + LEARN plan</li>
+              <li><code>progress.json</code> — persona, cadence, track, level, step, flags</li>
+              <li><code>journal.md</code> — decisions &amp; rationale (no secrets)</li>
+            </ul>
+          </div>
+          <div class="card tilt">
+            <div class="tag">global · across projects</div>
+            <h3 class="mt-s" style="font-size:1.12rem"><code>${CLAUDE_PLUGIN_DATA}/profile.json</code></h3>
+            <ul class="prose" style="list-style:none;padding:0;margin-top:12px;display:grid;gap:8px;font-size:.95rem">
+              <li>Mastery map (concept → score)</li>
+              <li>Tracks touched, last persona, last cadence</li>
+              <li><code>schemaVersion</code> on both stores, with a migration note so a schema bump never corrupts an existing learner</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout mt-m" data-reveal style="max-width:52rem">
+          <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg></span>
+          <p><strong>Recovery:</strong> if the profile says a journey is active but <code>.dronacharya/</code> isn't found in the working directory, the orchestrator says so plainly and offers to re-locate or re-init — rather than silently vanishing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACKEND + INJECTION -->
+    <section class="section section--alt" id="backend" aria-labelledby="back-h">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">The optional backend &amp; safety</span>
+          <h2 id="back-h">purple-sparrow, and data-not-instructions</h2>
+        </div>
+        <div class="grid grid-2" data-reveal>
+          <div class="card tilt">
+            <h3 style="font-size:1.12rem">Wired as a non-breaking option</h3>
+            <p>A plugin can't declare a hard dependency on a separate MCP server, and an always-on server would error for the 99% without the binary. So purple-sparrow ships as <code>.mcp.json.example</code> + <code>userConfig</code> keys — nothing auto-starts. The fallback (conceptual teaching or a simple local store) is the default; the real backend appears only behind an explicit "advanced" wall in the <code>backend</code> / <code>setup</code> skills, which branch on detection.</p>
+          </div>
+          <div class="card tilt">
+            <h3 style="font-size:1.12rem">Fetched content is data, never instructions</h3>
+            <p>Anything the research-scout or a lesson fetches from the web is quarantined — it never flows into the teaching contract, the hook injection, or the journal in a form that could re-drive the agent. Hook-injected text stays factual and context-shaped, never imperative system-speak. This boundary is also a taught lesson in the security track.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRADEOFFS -->
+    <section class="section" id="tradeoffs" aria-labelledby="trade-h">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Honest tradeoffs</span>
+          <h2 id="trade-h">What we chose, and what it costs</h2>
+          <p>Summarized faithfully from the build plan. Every choice has a price; here it is.</p>
+        </div>
+        <div class="table-wrap" data-reveal style="max-width:60rem">
+          <table>
+            <thead><tr><th scope="col">Choice</th><th scope="col">Why</th><th scope="col">The cost</th></tr></thead>
+            <tbody>
+              <tr><td>Claude Code plugin first</td><td>Namespacing, hooks, MCP, clean updates; matches the pasted-URL UX.</td><td>Needs a recent Claude Code; the richest features don't all port to Cursor.</td></tr>
+              <tr><td>Curricula as data files, not skills</td><td>The skill listing budget is ~1% of context; fat syllabi as skills would crowd it.</td><td>The orchestrator must load curriculum on demand rather than rely on auto-invocation.</td></tr>
+              <tr><td>One orchestrator; others user-invocable</td><td>Skills are description-matched, not deterministic callers; a reliable linear flow needs a single driver.</td><td>More logic concentrated in <code>start</code> / <code>continue</code>.</td></tr>
+              <tr><td>Guardrails via hooks, crumb-not-contract per turn</td><td>Prose fades after compaction; hooks re-anchor cheaply and safely.</td><td>Hooks may not run in Cursor; injection must stay cheap, safe, and never cage the user.</td></tr>
+              <tr><td>Fresh-memory subagents, batch grading</td><td>Unbiased assessment and review; per-item forks are a cost/latency trap.</td><td>Spawning subagents adds tokens and latency, so they're used sparingly.</td></tr>
+              <tr><td>purple-sparrow opt-in, fallback default</td><td>An always-on plugin MCP server would error for users without the binary.</td><td>Backend lessons are conceptual unless you opt in; purple-sparrow itself is alpha.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-m" style="color:var(--muted);max-width:52rem" data-reveal>Full detail — including the token budget, test strategy, and the complete honesty ledger — lives in <a href="https://github.com/dibakshya01/dronAIcharya/blob/main/build-plan.md" target="_blank" rel="noopener">build-plan.md</a> and <a href="https://github.com/dibakshya01/dronAIcharya/blob/main/finding.md" target="_blank" rel="noopener">finding.md</a>.</p>
+      </div>
+    </section>
+
+    <section class="section--tight">
+      <div class="container">
+        <div class="cta-band" data-reveal>
+          <h2>Read the source. It's all plain Markdown and small shell scripts.</h2>
+          <p>Plugins and skills run with your permissions — so read before you install. Nothing is hidden.</p>
+          <div class="hero-cta">
+            <a class="btn btn--primary btn--lg" href="https://github.com/dibakshya01/dronAIcharya" target="_blank" rel="noopener">Browse the repo</a>
+            <a class="btn btn--ghost btn--lg" href="contact.html">Contribute or report an issue</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="dronAIcharya — home">
+            <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+              <circle cx="20" cy="12.5" r="7" stroke-width="2"/>
+              <circle cx="20" cy="12.5" r="2.6" stroke="none" style="fill:var(--accent)"/>
+              <path d="M5 27 C 9 21, 13 17, 17.3 13.9" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M17.3 13.9 L 13 14.6 M17.3 13.9 L 14.9 18.3" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+            <span>dron<span class="wm-ai">AI</span>charya</span>
+          </a>
+          <p>Your AI guru — learn as you build. A Claude Code plugin (also a skills repo, portable to Cursor) that teaches you while building real software with you.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="eli5.html">For everyone</a></li>
+            <li><a href="docs.html">Docs</a></li>
+            <li><a href="architecture.html">Architecture</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get started</h4>
+          <ul>
+            <li><a href="index.html#install">Install</a></li>
+            <li><a href="docs.html#journey">The journey</a></li>
+            <li><a href="docs.html#commands">Commands</a></li>
+            <li><a href="docs.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Project</h4>
+          <ul>
+            <li><a href="https://github.com/dibakshya01/dronAIcharya" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://github.com/dibakshya01/dronAIcharya/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a></li>
+            <li><a href="https://github.com/dibakshya01/dronAIcharya/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a></li>
+            <li><a href="https://github.com/dibakshya01/dronAIcharya/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>MIT &copy; <span id="year">2026</span> dibakshya01 · No telemetry · Your API key never leaves your machine.</span>
+        <span class="tagline">Built to teach. If it ever stops teaching and starts just doing — say "teach me".</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="copy-live" class="visually-hidden" role="status" aria-live="polite"></div>
+  <script src="assets/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+{
+  "module": "py-m10-testing-and-project",
+  "track": "python",
+  "items": [
+    {
+      "id": "py-m10-01",
+      "concept": "assert-basics",
+      "type": "mcq",
+      "level": "all",
+      "q": "What does `assert add(2, 3) == 5` do when `add` is correct, and when it's broken?",
+      "options": [
+        "If the result equals 5, nothing happens; if it doesn't, it raises AssertionError and stops",
+        "Fixes the add function automatically",
+        "Prints 5 either way",
+        "Always raises an error"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "An assert checks a claim: it's silent when true and raises AssertionError (halting the run) when false.",
+        "wrong": "It doesn't print, doesn't always error, and can't fix code — it only verifies your stated expectation."
+      }
+    },
+    {
+      "id": "py-m10-02",
+      "concept": "pytest-discovery",
+      "type": "mcq",
+      "level": "some",
+      "q": "For pytest to automatically find and run a test, how should it be written?",
+      "options": [
+        "Any function at all is run as a test",
+        "As a function whose name starts with `test_`, typically in a file named `test_*.py`, containing asserts",
+        "It must be named main()",
+        "It must print 'PASS' at the end"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "pytest discovers functions named test_... in test_*.py files and treats a passing (non-raising) run as a pass.",
+        "wrong": "Not every function is a test; the test_ naming convention is how pytest finds them, and no print of 'PASS' is needed."
+      }
+    },
+    {
+      "id": "py-m10-03",
+      "concept": "what-tests-prove",
+      "type": "mcq",
+      "level": "confident",
+      "q": "Your pytest suite is all green. What does that actually prove?",
+      "options": [
+        "The specific cases you wrote tests for behave as expected — nothing about inputs you didn't test",
+        "The program is perfect and bug-free for every possible input",
+        "The code will never need changing",
+        "Nothing useful at all"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Green means the behaviours you checked hold; it says nothing about untested inputs, so coverage and honest test choice matter.",
+        "wrong": "Tests can't prove total correctness or future-proofing, but they're far from useless — they guard the cases you wrote."
+      }
+    },
+    {
+      "id": "py-m10-04",
+      "concept": "test-independence",
+      "type": "mcq",
+      "level": "some",
+      "q": "Why should each test set up its own fresh data (e.g. start from an empty list)?",
+      "options": [
+        "Because pytest forbids sharing data",
+        "It makes no difference",
+        "So tests don't depend on each other's order or leftovers, keeping each failure meaningful and isolated",
+        "To make tests run slower on purpose"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "Independent tests can run in any order and a failure points at one behaviour, not at pollution from a previous test.",
+        "wrong": "It isn't about slowing tests or a pytest rule; the point is isolation so results are trustworthy."
+      }
+    },
+    {
+      "id": "py-m10-05",
+      "concept": "what-tests-prove",
+      "type": "short",
+      "level": "confident",
+      "q": "In one or two sentences, explain the habit of 'write a failing test for a bug, then fix the code'. Why is it valuable?",
+      "rubric": [
+        "First reproduce the bug as a test that fails, confirming you've captured it",
+        "Then change the code until the test passes (goes green)",
+        "The test stays in the suite and prevents the bug from silently returning (a regression guard)"
+      ],
+      "explain": {
+        "right": "Good answers capture reproduce-then-fix and note the test becomes a permanent guard against the bug recurring.",
+        "wrong": "A weak answer just says 'write tests' without the reproduce-first idea or the regression-protection payoff."
+      }
+    }
+  ]
+}

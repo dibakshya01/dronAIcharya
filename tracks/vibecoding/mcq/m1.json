@@ -1,0 +1,76 @@
+{
+  "module": "vibe-m1-what-is-an-llm",
+  "track": "vibecoding",
+  "items": [
+    {
+      "id": "vibe-m1-01",
+      "concept": "how-an-llm-predicts",
+      "type": "mcq",
+      "level": "all",
+      "q": "At its core, how does a large language model produce an answer?",
+      "options": [
+        "It predicts the next token (word-piece) from patterns it learned, one piece at a time",
+        "It looks the answer up in a built-in database of facts",
+        "It runs your code and reports what happened",
+        "It searches the live internet for every question by default"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "An LLM is a next-token predictor; it generates text one likely piece at a time from learned patterns.",
+        "wrong": "It has no fact database and no default internet access; those require tools. It isn't executing code either."
+      }
+    },
+    {
+      "id": "vibe-m1-02",
+      "concept": "knowledge-cutoff",
+      "type": "mcq",
+      "level": "all",
+      "q": "Why might an LLM not know about something that happened very recently?",
+      "options": [
+        "Its knowledge comes from training done at a point in time (a cutoff); newer info must be given to it or fetched by a tool",
+        "Recent events are too small to matter to it",
+        "It forgets things over time like a person",
+        "It only knows things its current user has told it"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Training happens once at a point in time, so the base model has a knowledge cutoff; current facts come via context or tools.",
+        "wrong": "It doesn't 'forget'; its weights are frozen after training. It knows far more than just what the user said."
+      }
+    },
+    {
+      "id": "vibe-m1-03",
+      "concept": "hallucination",
+      "type": "mcq",
+      "level": "all",
+      "q": "An LLM confidently gives you a function name that turns out not to exist. This is best described as:",
+      "options": [
+        "The model lying on purpose",
+        "A bug in your computer",
+        "A hallucination — a plausible-sounding but incorrect prediction",
+        "Proof the model is broken and unusable"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "It predicts plausible text even when it doesn't truly 'know', producing confident-but-wrong output called a hallucination.",
+        "wrong": "It isn't a machine fault or intentional lying, and it doesn't make the model useless — it means you verify consequential output."
+      }
+    },
+    {
+      "id": "vibe-m1-04",
+      "concept": "hallucination",
+      "type": "short",
+      "level": "some",
+      "q": "In one or two sentences: why should you double-check code an LLM writes, even when it sounds confident?",
+      "rubric": [
+        "Mentions it predicts plausible text, not verified truth",
+        "Mentions confidence in tone does not equal correctness / it can hallucinate",
+        "Implies verifying by running it or checking against the spec"
+      ],
+      "explain": {
+        "right": "Good answers note that fluent confidence isn't correctness, so you verify by running it / checking the spec.",
+        "wrong": "A weak answer just says 'because computers make mistakes' without the prediction/confidence idea."
+      }
+    }
+  ]
+}

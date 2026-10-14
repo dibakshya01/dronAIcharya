@@ -1,0 +1,96 @@
+{
+  "module": "sec-m7-ai-security-agency-disclosure",
+  "track": "cyber-ai-security",
+  "items": [
+    {
+      "id": "sec-m7-01",
+      "concept": "excessive-agency",
+      "type": "mcq",
+      "level": "all",
+      "q": "What is 'excessive agency' (OWASP LLM06)?",
+      "options": [
+        "The model thinking harmful thoughts",
+        "The model responding too quickly",
+        "Using more than one AI model in an app",
+        "Giving an LLM-based system too much power — too many tools, too much permission, or too much autonomy to act without a check — so a wrong or hijacked model can do real damage"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Excessive agency is about what the system can DO: the more it can act unchecked, the bigger the blast radius when it's wrong or hijacked.",
+        "wrong": "It's not about the model's 'thoughts', its speed, or model count — it's about excessive capability to act."
+      }
+    },
+    {
+      "id": "sec-m7-02",
+      "concept": "excessive-agency-mitigation",
+      "type": "mcq",
+      "level": "all",
+      "q": "A summarizer feature has been given a tool that can delete files, though it never needs to. Why is that a problem, and what's the fix?",
+      "options": [
+        "No problem — it only matters if the tool is actually used",
+        "Add more tools so it has options",
+        "Fix it by telling the model in the prompt not to delete files",
+        "The capability itself is the risk; apply least privilege (remove the tool) and keep a human on consequential actions"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "A capability the feature doesn't need is pure attack surface; remove it (least privilege) and gate consequential actions behind a human.",
+        "wrong": "The unused power is still exploitable; a prompt instruction isn't a security boundary, and more tools means more risk."
+      }
+    },
+    {
+      "id": "sec-m7-03",
+      "concept": "sensitive-disclosure",
+      "type": "mcq",
+      "level": "all",
+      "q": "Which practice best prevents an LLM app from disclosing one user's data to another (LLM02)?",
+      "options": [
+        "Ask users politely not to request others' data",
+        "Enforce access control before data reaches the model, so a user's agent can only ever retrieve that user's own rows",
+        "Make the model's answers shorter",
+        "Tell the model in the system prompt to keep each user's data private"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Filter data to the current user at the data layer before it enters the context; then even a prompt injection can't make the model fetch someone else's rows.",
+        "wrong": "A system-prompt instruction is not a security boundary, politeness isn't a control, and answer length is irrelevant."
+      }
+    },
+    {
+      "id": "sec-m7-04",
+      "concept": "system-prompt-leakage",
+      "type": "mcq",
+      "level": "some",
+      "q": "What is the key lesson of 'system prompt leakage' (LLM07)?",
+      "options": [
+        "The system prompt can be extracted, so never place secrets in it — treat anything in it as potentially discoverable",
+        "Leakage only happens if you share your prompt publicly",
+        "System prompts should always be shown to users",
+        "The system prompt is a secure vault, so put API keys in it"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "System prompts can be coaxed out, so they're not a safe place for secrets; keep credentials in the environment and behind tools instead.",
+        "wrong": "It's not a vault, it needn't be public, and the risk exists regardless of whether you deliberately shared it."
+      }
+    },
+    {
+      "id": "sec-m7-05",
+      "concept": "llm-supply-chain-misc",
+      "type": "mcq",
+      "level": "some",
+      "q": "In a retrieval (RAG) app, an attacker uploads a document full of hidden instructions into the knowledge base. Which two LLM risks are in play?",
+      "options": [
+        "Only misinformation (LLM09)",
+        "None — RAG is immune to injection",
+        "Vector/embedding weaknesses (LLM08) and indirect prompt injection (LLM01) — the poisoned document becomes instructions when retrieved",
+        "Only unbounded consumption (LLM10)"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "Poisoned retrieval stores (LLM08) feed indirect injection (LLM01) when the document is retrieved and read as instructions; partition and vet what gets embedded.",
+        "wrong": "It's more than consumption or misinformation, and RAG is very much exposed to injection via retrieved content."
+      }
+    }
+  ]
+}

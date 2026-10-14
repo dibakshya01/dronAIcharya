@@ -1,0 +1,94 @@
+{
+  "module": "py-m5-data-structures",
+  "track": "python",
+  "items": [
+    {
+      "id": "py-m5-01",
+      "concept": "list-aliasing",
+      "type": "mcq",
+      "level": "confident",
+      "q": "`a = [1, 2]`, then `b = a`, then `b.append(3)`. What is `a` now?",
+      "options": [
+        "[1, 2]",
+        "An error",
+        "[3]",
+        "[1, 2, 3], because b = a makes both names point at the same list, not a copy"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Assignment binds another name to the same list object, so changing it through b also changes a. To get an independent list use b = a.copy().",
+        "wrong": "b = a does not copy the list; both names refer to one list, so a sees the appended 3."
+      }
+    },
+    {
+      "id": "py-m5-02",
+      "concept": "mutating-methods-return-none",
+      "type": "mcq",
+      "level": "some",
+      "q": "What is the value of `x` after `x = [3, 1, 2].sort()`?",
+      "options": [
+        "None, because .sort() sorts the list in place and returns None",
+        "An error",
+        "[1, 2, 3]",
+        "[3, 1, 2]"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "List methods that change the list in place (sort, append, reverse) return None; to get a sorted copy use sorted([3,1,2]).",
+        "wrong": "sort() doesn't return the sorted list; capturing its result gives None, a very common surprise."
+      }
+    },
+    {
+      "id": "py-m5-03",
+      "concept": "empty-dict-vs-set",
+      "type": "mcq",
+      "level": "some",
+      "q": "What does `type({})` report?",
+      "options": [
+        "set",
+        "list",
+        "It's a syntax error",
+        "dict — `{}` is an empty dictionary; the empty set is `set()`"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Empty curly braces make an empty dict, not a set; you must write set() for an empty set.",
+        "wrong": "`{}` is never a set, list, or error — it's specifically an empty dict, a classic gotcha."
+      }
+    },
+    {
+      "id": "py-m5-04",
+      "concept": "choosing-a-structure",
+      "type": "mcq",
+      "level": "all",
+      "q": "You need to store each task's fields by name — its text, whether it's done, and a priority. Which structure fits one task best?",
+      "options": [
+        "A set, because order doesn't matter",
+        "A dict, reached by name like task[\"text\"]",
+        "A single string with everything glued together",
+        "A list, reached by position like task[0]"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "When each piece of data has a name, a dict (key -> value) is the clear fit: task[\"done\"] reads far better than task[1].",
+        "wrong": "A list forces you to remember positions, a set can't hold named fields or duplicates, and a glued string is unparseable."
+      }
+    },
+    {
+      "id": "py-m5-05",
+      "concept": "choosing-a-structure",
+      "type": "short",
+      "level": "some",
+      "q": "Name one good use each for a list, a dict, and a set, in one sentence apiece.",
+      "rubric": [
+        "list: an ordered, changeable sequence (e.g. the tasks in order)",
+        "dict: look up values by a named key (e.g. a task's fields)",
+        "set: unique, unordered membership (e.g. the distinct tags, or fast 'is x in here?')"
+      ],
+      "explain": {
+        "right": "Good answers tie each structure to its defining trait: order/change, named lookup, and uniqueness/fast membership.",
+        "wrong": "A weak answer uses them interchangeably without naming what makes each the right tool."
+      }
+    }
+  ]
+}

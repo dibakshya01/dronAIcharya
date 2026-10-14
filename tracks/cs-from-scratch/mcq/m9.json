@@ -1,0 +1,95 @@
+{
+  "module": "cs-m9-networking-and-web",
+  "track": "cs-from-scratch",
+  "items": [
+    {
+      "id": "cs-m9-01",
+      "concept": "ip-and-packets",
+      "type": "mcq",
+      "level": "all",
+      "q": "How does a large message travel across the internet?",
+      "options": [
+        "Split into packets, each stamped with source and destination IP, forwarded by routers",
+        "As an email attachment every time",
+        "Only over a single direct cable from sender to receiver",
+        "As one continuous unbroken stream that must stay together"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Data is chopped into addressed packets that routers forward hop by hop; they can even take different paths and arrive out of order.",
+        "wrong": "It isn't one indivisible stream or a single dedicated cable, and packets, not emails, are the unit of transfer."
+      }
+    },
+    {
+      "id": "cs-m9-02",
+      "concept": "tcp-vs-udp",
+      "type": "mcq",
+      "level": "all",
+      "q": "When would UDP be a better fit than TCP?",
+      "options": [
+        "A live video call, where speed matters more than resending a lost frame",
+        "Transferring a bank statement file",
+        "Any time you want guaranteed, in-order delivery",
+        "Downloading a program where every byte must be correct"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "UDP's fast, no-guarantee delivery suits live media/games, where a late or lost packet is better dropped than waited on.",
+        "wrong": "File downloads and statements need TCP's reliable, in-order delivery; guaranteed delivery is exactly what TCP (not UDP) provides."
+      }
+    },
+    {
+      "id": "cs-m9-03",
+      "concept": "dns",
+      "type": "mcq",
+      "level": "all",
+      "q": "What does DNS do?",
+      "options": [
+        "It is the website's actual address",
+        "It translates a human-readable domain name into an IP address",
+        "It stores the web page's content",
+        "It encrypts your traffic"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "DNS is the directory that turns a name like example.com into the IP address your computer then connects to.",
+        "wrong": "DNS is the lookup system, not the address itself (that's the IP), and it neither encrypts traffic nor hosts page content."
+      }
+    },
+    {
+      "id": "cs-m9-04",
+      "concept": "http-request-response",
+      "type": "mcq",
+      "level": "all",
+      "q": "In HTTP, what does a status code like 404 represent?",
+      "options": [
+        "Part of the server's response, indicating the outcome (here: not found)",
+        "The number of images on the page",
+        "The size of the page in kilobytes",
+        "The user's IP address"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "The server's response includes a status code (200 OK, 404 Not Found, 500 error) summarizing what happened with the request.",
+        "wrong": "It's not a size, an IP, or an image count; it's the response's outcome indicator."
+      }
+    },
+    {
+      "id": "cs-m9-05",
+      "concept": "page-load-flow",
+      "type": "short",
+      "level": "some",
+      "q": "Briefly trace what happens from typing https://example.com to seeing the page.",
+      "rubric": [
+        "DNS resolves the domain name to an IP address",
+        "A connection is opened to that IP (TCP, plus TLS for HTTPS)",
+        "The browser sends an HTTP request and the server returns a response (HTML + status)",
+        "The browser parses the HTML, fetches additional resources (CSS/JS/images), and renders"
+      ],
+      "explain": {
+        "right": "Good answers go DNS lookup -> TCP/TLS connection -> HTTP request/response -> parse and fetch sub-resources -> render.",
+        "wrong": "A weak answer says 'the browser just downloads the page' with no DNS, connection, request/response, or rendering steps."
+      }
+    }
+  ]
+}

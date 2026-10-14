@@ -1,0 +1,96 @@
+{
+  "module": "sec-m9-deny-by-default",
+  "track": "cyber-ai-security",
+  "items": [
+    {
+      "id": "sec-m9-01",
+      "concept": "deny-by-default",
+      "type": "mcq",
+      "level": "all",
+      "q": "What does 'deny by default' mean for access control?",
+      "options": [
+        "Refuse everything unless a rule explicitly allows it, so a forgotten rule fails safe (locked) rather than open",
+        "Deny access only to users you don't recognize",
+        "Turn off the app when under attack",
+        "Allow everything, then block specific bad cases as you find them"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Deny-by-default (allow-listing) means omissions are denied — the safe failure mode — instead of accidentally exposed.",
+        "wrong": "Allow-then-block (blocklisting) fails open on anything you forgot; the other options describe unrelated behaviors."
+      }
+    },
+    {
+      "id": "sec-m9-02",
+      "concept": "fail-open-vs-closed",
+      "type": "mcq",
+      "level": "all",
+      "q": "Why is deny-by-default safer than allow-by-default?",
+      "options": [
+        "Its dangerous mistakes are omissions, and an omission should DENY (annoying but safe) rather than expose data",
+        "It means you never have to write any access rules",
+        "It's faster to run",
+        "It uses less memory"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "With deny-by-default, the thing you forgot to allow is simply blocked — a safe failure — whereas allow-by-default leaks whatever you forgot to block.",
+        "wrong": "It's not about speed or memory, and it requires MORE deliberate allow-rules, not fewer."
+      }
+    },
+    {
+      "id": "sec-m9-03",
+      "concept": "row-level-security",
+      "type": "mcq",
+      "level": "all",
+      "q": "What is row-level security (RLS)?",
+      "options": [
+        "Hiding rows from the user interface",
+        "Limiting how many rows a query can return",
+        "Encrypting every row with a different key",
+        "Enforcing 'a user can only see their own rows' at the data layer, so the data store itself refuses other users' rows even if the UI and app code are bypassed"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "RLS puts authorization next to the data, so it holds even when a forged request or app-code bug slips past the UI and application checks.",
+        "wrong": "It's not UI hiding, per-row encryption, or a row-count cap — it's data-layer authorization."
+      }
+    },
+    {
+      "id": "sec-m9-04",
+      "concept": "defense-in-depth-layers",
+      "type": "mcq",
+      "level": "some",
+      "q": "You already check permissions in your application code. Why also enforce them at the data layer?",
+      "options": [
+        "Only to make queries run faster",
+        "The database check replaces the need for any app-code check",
+        "It's redundant and wasteful — one check is enough",
+        "The data layer is the backstop that holds when the UI or app-code check is bypassed by a bug, a forged request, or an over-privileged agent"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "UI, app-code, and data-layer checks are layers, not substitutes; the data layer outlasts the others when they're bypassed.",
+        "wrong": "It's not wasteful redundancy, it doesn't replace the app check (keep both), and it isn't a performance tactic."
+      }
+    },
+    {
+      "id": "sec-m9-05",
+      "concept": "alpha-backend-caveat",
+      "type": "mcq",
+      "level": "all",
+      "q": "purple-sparrow says its own policy engine 'needs an independent security audit before regulated data.' What's the right call?",
+      "options": [
+        "Believe the caveat: use it to LEARN deny-by-default and row policies with test data, but never put real/regulated data in it while that caveat stands",
+        "The caveat means the tool is broken and shouldn't be used at all",
+        "Put real data in anyway, since auditing is just a formality",
+        "Ignore it — if it has auth and policies, it's production-ready"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "A tool stating its own limits is doing the right thing; it's great for learning against a real engine, but regulated/real data waits for the audit.",
+        "wrong": "Having auth doesn't equal audited; the tool is still useful for learning; and overriding an explicit alpha caveat with real data is exactly the mistake the security mindset avoids."
+      }
+    }
+  ]
+}

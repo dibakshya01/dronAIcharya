@@ -1,0 +1,21 @@
+{
+  "_comment": "OPTIONAL purple-sparrow backend for dronAIcharya. This file is an EXAMPLE and is NOT loaded automatically — dronAIcharya works fully without any backend. Wire it in only if you want to learn/build against a real agent-native backend. The `setup` skill walks you through it.",
+  "_how_to_use": [
+    "1. Clone and build purple-sparrow (Go): CGO_ENABLED=0 go build -o purplesparrow ./cmd/purplesparrow  (from github.com/dibakshya01/purple-sparrow)",
+    "2. Run the backend:  PS_ADMIN_API_KEY=ps_sk_dev ./purplesparrow   (serves HTTP on 127.0.0.1:8787)",
+    "3. Register this MCP server with YOUR key. Easiest: `claude mcp add` at user scope, OR copy the server block below into your own MCP config and replace <your-api-key>.",
+    "4. purplesparrow must be on your PATH (or use an absolute path in 'command'). The HTTP backend (step 2) must be running for the MCP tools to work.",
+    "5. In your dronAIcharya journey, set flags.purpleSparrow=true in ./.dronacharya/progress.json .",
+    "NOTE: purple-sparrow is alpha and its policy engine 'needs an independent security audit before regulated data' — great for learning, not for real/regulated data."
+  ],
+  "mcpServers": {
+    "purple-sparrow": {
+      "command": "purplesparrow",
+      "args": ["mcp"],
+      "env": {
+        "PS_API_URL": "http://127.0.0.1:8787",
+        "PS_API_KEY": "<your-api-key>"
+      }
+    }
+  }
+}

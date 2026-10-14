@@ -1,0 +1,94 @@
+{
+  "module": "py-m2-values-variables-types",
+  "track": "python",
+  "items": [
+    {
+      "id": "py-m2-01",
+      "concept": "basic-types",
+      "type": "mcq",
+      "level": "all",
+      "q": "Which of these is a `bool` value?",
+      "options": [
+        "3.0",
+        "\"True\"",
+        "1",
+        "True"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "`True` (no quotes) is one of the two bool values; the other is `False`.",
+        "wrong": "`\"True\"` is a str (it's in quotes), `1` is an int, and `3.0` is a float."
+      }
+    },
+    {
+      "id": "py-m2-02",
+      "concept": "assignment-not-equality",
+      "type": "mcq",
+      "level": "all",
+      "q": "What does `task = \"buy milk\"` do?",
+      "options": [
+        "Stores the string \"buy milk\" under the name task",
+        "Tests whether task equals \"buy milk\"",
+        "Creates a permanent, unchangeable constant",
+        "Prints \"buy milk\""
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "A single `=` is assignment: it binds the name `task` to the value \"buy milk\". Read it as 'task gets \"buy milk\"'.",
+        "wrong": "Testing equality is `==`; assignment doesn't print anything, and the name can be reassigned later."
+      }
+    },
+    {
+      "id": "py-m2-03",
+      "concept": "type-mixing-error",
+      "type": "mcq",
+      "level": "all",
+      "q": "`input()` returns a str. A learner writes `age = input(\"Age: \")` then `age + 1`. What happens?",
+      "options": [
+        "It rounds age to the nearest whole number",
+        "A TypeError, because you can't add an int to a str; convert first with int(age)",
+        "It works and gives a number",
+        "It joins them into \"...1\" silently"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "input() always gives a str, and Python won't mix a str with an int, so `age + 1` raises TypeError; use `int(age) + 1`.",
+        "wrong": "Python is strongly typed: it refuses to guess, so it neither silently joins nor rounds — it errors until you convert explicitly."
+      }
+    },
+    {
+      "id": "py-m2-04",
+      "concept": "int-vs-float-division",
+      "type": "mcq",
+      "level": "some",
+      "q": "In Python 3, what is the value and type of `7 / 2`?",
+      "options": [
+        "3, an int",
+        "3.5, an int",
+        "4, an int",
+        "3.5, a float (plain `/` always gives a float; use `//` for integer floor division, which gives 3)"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Single-slash `/` is true division and always returns a float, so `7 / 2` is 3.5; `7 // 2` is floor division and returns 3.",
+        "wrong": "`/` never returns an int in Python 3, doesn't truncate to 3, and doesn't round to 4; that's what `//` (3) is for."
+      }
+    },
+    {
+      "id": "py-m2-05",
+      "concept": "dynamic-typing",
+      "type": "short",
+      "level": "some",
+      "q": "Explain in one or two sentences what 'dynamically typed' means in Python, and why `int(\"3\")` is sometimes necessary.",
+      "rubric": [
+        "You don't declare types; the value carries the type, and a name can point at different types over time",
+        "input() and similar give strings, so numbers arrive as text",
+        "int(...) explicitly converts the text into a number so you can do math"
+      ],
+      "explain": {
+        "right": "Good answers say types live on the values (checked as the program runs) and that explicit conversion turns text like \"3\" into the number 3.",
+        "wrong": "A weak answer says 'Python has no types' — it does; they're just attached to values, not declared on variables."
+      }
+    }
+  ]
+}

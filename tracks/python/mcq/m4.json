@@ -1,0 +1,94 @@
+{
+  "module": "py-m4-functions",
+  "track": "python",
+  "items": [
+    {
+      "id": "py-m4-01",
+      "concept": "print-vs-return",
+      "type": "mcq",
+      "level": "all",
+      "q": "A function only does `print(a + b)` and has no `return`. You write `total = add(2, 3)`. What is `total`?",
+      "options": [
+        "5",
+        "\"5\"",
+        "An error",
+        "None, because the function printed the value but returned nothing"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "print shows a value on screen but hands nothing back; with no return the function yields None, so total is None.",
+        "wrong": "The 5 was only displayed, not returned; to make total 5 the function must `return a + b`."
+      }
+    },
+    {
+      "id": "py-m4-02",
+      "concept": "mutable-default-argument",
+      "type": "mcq",
+      "level": "confident",
+      "q": "Given `def add_item(x, items=[]): items.append(x); return items`, you call `add_item(1)` then `add_item(2)`. What does the second call return?",
+      "options": [
+        "An error",
+        "[2]",
+        "[1]",
+        "[1, 2], because the default list is created once and shared across every call"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "A default argument is evaluated once when the function is defined, so the same list persists and accumulates: [1] then [1, 2]. This is the classic mutable-default trap.",
+        "wrong": "It doesn't get a fresh [] each call; the fix is `items=None` then `if items is None: items = []` inside."
+      }
+    },
+    {
+      "id": "py-m4-03",
+      "concept": "scope",
+      "type": "mcq",
+      "level": "all",
+      "q": "A variable `count` is created inside a function. You try to use `count` after the function returns. What happens?",
+      "options": [
+        "It becomes the string \"count\"",
+        "A NameError, because count is local to the function and no longer exists outside it",
+        "It works; count is available everywhere",
+        "It silently becomes 0"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Variables made inside a function are local: they live only during the call and vanish when it returns, so using count outside raises NameError.",
+        "wrong": "Locals aren't visible outside and don't default to 0 or a string; pass data out with return instead."
+      }
+    },
+    {
+      "id": "py-m4-04",
+      "concept": "parameters-vs-arguments",
+      "type": "mcq",
+      "level": "some",
+      "q": "In `def add(a, b): return a + b` called as `add(2, 3)`, which are the arguments?",
+      "options": [
+        "2 and 3",
+        "return",
+        "a and b",
+        "add"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Arguments are the actual values passed at call time (2 and 3); a and b are the parameters (the named blanks in the definition).",
+        "wrong": "a and b are parameters, `add` is the function's name, and `return` is a keyword — none are the arguments."
+      }
+    },
+    {
+      "id": "py-m4-05",
+      "concept": "print-vs-return",
+      "type": "short",
+      "level": "some",
+      "q": "Explain the difference between `print(x)` and `return x` inside a function.",
+      "rubric": [
+        "print shows a value to a human on screen; nothing is given back to the program",
+        "return hands the value back to the caller so it can be stored/used",
+        "Only a returned value can be captured in a variable like total = f()"
+      ],
+      "explain": {
+        "right": "Strong answers say print is for a human to read while return feeds the value back into the program for more work.",
+        "wrong": "A weak answer treats them as the same; the key is that only return's value can be assigned and reused."
+      }
+    }
+  ]
+}

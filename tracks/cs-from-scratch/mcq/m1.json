@@ -1,0 +1,94 @@
+{
+  "module": "cs-m1-data-representation",
+  "track": "cs-from-scratch",
+  "items": [
+    {
+      "id": "cs-m1-01",
+      "concept": "bits-and-bytes",
+      "type": "mcq",
+      "level": "all",
+      "q": "How many distinct values can a single byte (8 bits) represent?",
+      "options": [
+        "1000",
+        "8",
+        "256",
+        "64"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "Each bit has 2 states and there are 8 of them, so a byte has 2^8 = 256 possible patterns (values 0-255).",
+        "wrong": "8 is the number of bits, not combinations; 64 and 1000 don't match any power of two for 8 bits."
+      }
+    },
+    {
+      "id": "cs-m1-02",
+      "concept": "binary-and-hex",
+      "type": "mcq",
+      "level": "all",
+      "q": "Why is hexadecimal handy for reading bytes?",
+      "options": [
+        "Hex can store more information than binary in the same space",
+        "One hex digit equals exactly 4 bits, so two hex digits represent one byte",
+        "Computers store data in hex rather than binary",
+        "Hex numbers are a completely different kind of number from binary"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Hex is base 16, and one hex digit maps to exactly 4 bits, so a byte (8 bits) is neatly two hex digits.",
+        "wrong": "Hex, binary, and decimal are just spellings of the same values; computers still store bits, and hex holds no more information than the bits it represents."
+      }
+    },
+    {
+      "id": "cs-m1-03",
+      "concept": "text-encoding",
+      "type": "mcq",
+      "level": "all",
+      "q": "In the ASCII/Unicode world, how is the letter 'A' actually stored?",
+      "options": [
+        "As a picture of the shape 'A'",
+        "As the literal letter A, which computers understand directly",
+        "As a number (code point) that a codebook maps to the character 'A'",
+        "As a special 'letter' type separate from numbers"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "Text is numbers: a codebook like ASCII/Unicode assigns 'A' a number (65), and software maps it back to the character.",
+        "wrong": "Computers only store numbers/bits, not shapes or letters directly; there is no separate 'letter' storage beneath the bits."
+      }
+    },
+    {
+      "id": "cs-m1-04",
+      "concept": "text-encoding",
+      "type": "mcq",
+      "level": "some",
+      "q": "In UTF-8, which statement is true?",
+      "options": [
+        "Characters take 1 to 4 bytes, so one character is not always one byte",
+        "Every character always takes exactly two bytes",
+        "Bytes and characters are the same thing",
+        "Every character always takes exactly one byte"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "UTF-8 is variable length: ASCII characters use 1 byte while others (accents, CJK, emoji) use 2-4, so character count can differ from byte count.",
+        "wrong": "Fixed one- or two-byte-per-character claims describe other schemes, not UTF-8; conflating bytes with characters is the classic encoding bug."
+      }
+    },
+    {
+      "id": "cs-m1-05",
+      "concept": "bits-and-bytes",
+      "type": "short",
+      "level": "all",
+      "q": "In one or two sentences, explain why the same photo can be described as 'just bits' and also as a meaningful image.",
+      "rubric": [
+        "States the data is physically stored as bits (0s/1s), grouped into bytes",
+        "Notes that software/an agreed format interprets those bits as pixels/an image",
+        "Conveys that meaning comes from interpretation, not from the bits themselves"
+      ],
+      "explain": {
+        "right": "Good answers say the file is literally bits, and a format/program agrees how to read those bits as pixels, so meaning is layered on by interpretation.",
+        "wrong": "A weak answer treats the image as inherently 'a picture' inside the computer, missing that bits only mean something via an agreed interpretation."
+      }
+    }
+  ]
+}

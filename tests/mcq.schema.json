@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/dibakshya01/dronAIcharya/tests/mcq.schema.json",
+  "title": "dronAIcharya MCQ bank",
+  "description": "A bank of knowledge-check items for a track module.",
+  "type": "object",
+  "required": ["module", "items"],
+  "properties": {
+    "module": { "type": "string", "description": "Module id this bank belongs to, e.g. vibe-m1-what-is-an-llm" },
+    "track": { "type": "string" },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/item" }
+    }
+  },
+  "definitions": {
+    "item": {
+      "type": "object",
+      "required": ["id", "concept", "type", "q"],
+      "properties": {
+        "id": { "type": "string", "description": "Stable unique id, e.g. vibe-llm-01" },
+        "concept": { "type": "string", "description": "Concept id this checks (ties to mastery map)" },
+        "type": { "enum": ["mcq", "short"] },
+        "level": { "enum": ["all", "never-coded", "some", "confident"], "default": "all" },
+        "q": { "type": "string", "description": "The question text" },
+        "options": {
+          "type": "array",
+          "description": "Required for mcq; 3–5 options.",
+          "minItems": 3,
+          "maxItems": 5,
+          "items": { "type": "string" }
+        },
+        "answer": {
+          "type": "integer",
+          "description": "Required for mcq; 0-based index of the correct option.",
+          "minimum": 0
+        },
+        "rubric": {
+          "type": "array",
+          "description": "Required for short; key points a good answer covers.",
+          "items": { "type": "string" }
+        },
+        "explain": {
+          "type": "object",
+          "properties": {
+            "right": { "type": "string" },
+            "wrong": { "type": "string" }
+          }
+        },
+        "mastery_weight": { "type": "number", "default": 1, "minimum": 0 }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "mcq" } } },
+          "then": { "required": ["options", "answer"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "short" } } },
+          "then": { "required": ["rubric"] }
+        }
+      ]
+    }
+  }
+}

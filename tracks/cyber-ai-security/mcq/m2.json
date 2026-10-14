@@ -1,0 +1,94 @@
+{
+  "module": "sec-m2-web-security-basics",
+  "track": "cyber-ai-security",
+  "items": [
+    {
+      "id": "sec-m2-01",
+      "concept": "http-stateless",
+      "type": "mcq",
+      "level": "all",
+      "q": "HTTP is described as 'stateless.' What does that mean for security?",
+      "options": [
+        "Each request arrives on its own; the server doesn't remember you between requests unless something (like a session) carries that",
+        "The server remembers every user automatically, so no extra work is needed",
+        "The connection never drops",
+        "Data sent over HTTP can't be changed in transit"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "HTTP forgets between requests, so apps add sessions to remember you — and the server must treat every incoming request as independent and untrusted.",
+        "wrong": "It doesn't remember automatically, says nothing about tamper-protection (that's TLS), and isn't about connection stability."
+      }
+    },
+    {
+      "id": "sec-m2-02",
+      "concept": "client-is-untrusted",
+      "type": "mcq",
+      "level": "all",
+      "q": "Your form has JavaScript that blocks invalid input in the browser. Is server-side validation still needed?",
+      "options": [
+        "No — the browser already blocked bad input",
+        "Only if the form handles passwords",
+        "Yes — anything the client sends is attacker-controllable, so the server must validate too",
+        "No — as long as the site uses HTTPS"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "Client-side checks are a convenience; an attacker bypasses the browser and sends requests directly, so the server must always validate.",
+        "wrong": "Browser checks and HTTPS don't stop a hand-crafted request, and this applies to all input, not just passwords."
+      }
+    },
+    {
+      "id": "sec-m2-03",
+      "concept": "cookies-sessions",
+      "type": "mcq",
+      "level": "all",
+      "q": "An attacker steals a user's session cookie. What can they do?",
+      "options": [
+        "Nothing, unless they also know the password",
+        "Change the user's password remotely with no other access",
+        "Act as that logged-in user until the session expires, without knowing the password",
+        "Only read the cookie's name, not use it"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "The session cookie is a temporary key to the account; whoever holds it is 'logged in' as that user — this is session hijacking.",
+        "wrong": "They don't need the password, the cookie is usable not just readable, and what they can do depends on being that user, not an automatic password reset."
+      }
+    },
+    {
+      "id": "sec-m2-04",
+      "concept": "https-misconception",
+      "type": "mcq",
+      "level": "all",
+      "q": "A site shows the padlock / uses HTTPS. Which conclusion is CORRECT?",
+      "options": [
+        "The site has been security-audited",
+        "The data between your browser and that server is encrypted and tamper-protected in transit — but the site could still be a scam or full of bugs",
+        "The site's stored data is automatically encrypted too",
+        "The site is safe and trustworthy"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "HTTPS protects confidentiality and integrity in transit and verifies the domain's certificate — nothing more. Phishing sites get valid certs easily.",
+        "wrong": "HTTPS does not make a site honest, bug-free, audited, or its stored data encrypted; that's the classic 'padlock = safe' misconception."
+      }
+    },
+    {
+      "id": "sec-m2-05",
+      "concept": "https-scope",
+      "type": "short",
+      "level": "some",
+      "q": "In one or two sentences: what does HTTPS protect, and name one thing it does NOT protect?",
+      "rubric": [
+        "States HTTPS protects data in transit (confidentiality + integrity between browser and server)",
+        "Mentions it verifies the server's domain/certificate (optional but good)",
+        "Names something out of scope: stored data, access control, input validation, or site trustworthiness"
+      ],
+      "explain": {
+        "right": "Good answers scope HTTPS to the transit pipe and name an out-of-scope concern like stored data or whether the site is trustworthy.",
+        "wrong": "A weak answer says 'HTTPS makes the site secure,' which overclaims what encryption in transit does."
+      }
+    }
+  ]
+}

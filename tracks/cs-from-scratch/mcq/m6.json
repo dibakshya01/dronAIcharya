@@ -1,0 +1,94 @@
+{
+  "module": "cs-m6-algorithms-big-o",
+  "track": "cs-from-scratch",
+  "items": [
+    {
+      "id": "cs-m6-01",
+      "concept": "what-big-o-measures",
+      "type": "mcq",
+      "level": "all",
+      "q": "What does Big-O notation actually describe?",
+      "options": [
+        "How the amount of work grows as the input size grows",
+        "How much memory your computer has",
+        "The programming language's speed",
+        "The exact number of seconds an algorithm takes"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Big-O describes growth: how the number of steps scales as input size n increases, ignoring constants and hardware.",
+        "wrong": "It is not a measurement in seconds, not your RAM size, and not about the language; it's a growth rate."
+      }
+    },
+    {
+      "id": "cs-m6-02",
+      "concept": "ordering-classes",
+      "type": "mcq",
+      "level": "all",
+      "q": "Order these from best (slowest-growing) to worst as n gets large:",
+      "options": [
+        "O(1), O(log n), O(n), O(n^2)",
+        "They all grow the same",
+        "O(log n), O(1), O(n^2), O(n)",
+        "O(n^2), O(n), O(log n), O(1)"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Constant beats logarithmic beats linear beats quadratic: O(1) < O(log n) < O(n) < O(n^2) by growth.",
+        "wrong": "The other orderings scramble the classes; they do not grow the same (the gaps are enormous at large n)."
+      }
+    },
+    {
+      "id": "cs-m6-03",
+      "concept": "what-big-o-measures",
+      "type": "mcq",
+      "level": "some",
+      "q": "A friend says 'O(n^2) means the program takes n-squared seconds.' Why is that wrong?",
+      "options": [
+        "It should be n-squared minutes, not seconds",
+        "O(n^2) actually means it never finishes",
+        "Big-O drops constants and units; it describes how runtime scales with n, not a clock time",
+        "It's correct"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "Big-O strips out constants and units to capture growth shape; it tells you doubling n roughly quadruples the work, not any specific second count.",
+        "wrong": "It's not a unit of time at all, and O(n^2) finishes fine; the error is treating a growth rate as a stopwatch reading."
+      }
+    },
+    {
+      "id": "cs-m6-04",
+      "concept": "reading-big-o",
+      "type": "mcq",
+      "level": "some",
+      "q": "A function has a loop over all n items, and inside it another loop over all n items. Its time complexity is about:",
+      "options": [
+        "O(1)",
+        "O(n)",
+        "O(n^2)",
+        "O(log n)"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "Nested loops each running n times do about n x n = n^2 steps, so it's O(n^2).",
+        "wrong": "O(1)/O(log n)/O(n) describe no-loop, halving, and single-pass work respectively; two nested full passes square the work."
+      }
+    },
+    {
+      "id": "cs-m6-05",
+      "concept": "reading-big-o",
+      "type": "short",
+      "level": "confident",
+      "q": "Why can an O(n^2) algorithm sometimes beat an O(n log n) one in practice?",
+      "rubric": [
+        "Big-O ignores constant factors and lower-order terms",
+        "For small n, those hidden constants can dominate, so the 'worse' class may run faster",
+        "Big-O matters most as n gets large / describes scaling, not small-input speed"
+      ],
+      "explain": {
+        "right": "Good answers note Big-O hides constants, so on small inputs a simpler O(n^2) can win; the asymptotic advantage shows up as n grows.",
+        "wrong": "A weak answer claims Big-O is always decisive, ignoring that constants and input size matter for real runtime."
+      }
+    }
+  ]
+}

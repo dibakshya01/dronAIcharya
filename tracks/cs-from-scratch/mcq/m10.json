@@ -1,0 +1,95 @@
+{
+  "module": "cs-m10-databases",
+  "track": "cs-from-scratch",
+  "items": [
+    {
+      "id": "cs-m10-01",
+      "concept": "relational-model",
+      "type": "mcq",
+      "level": "all",
+      "q": "In the relational model, a row and a column are, respectively:",
+      "options": [
+        "One record (e.g. one user) and one field (e.g. email)",
+        "An index and a key",
+        "A database and a table",
+        "A query and its result"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "A table's row is a single record; a column is a single typed field shared by every row.",
+        "wrong": "Databases, queries, indexes, and keys are different concepts; a row is a record and a column is a field."
+      }
+    },
+    {
+      "id": "cs-m10-02",
+      "concept": "keys",
+      "type": "mcq",
+      "level": "all",
+      "q": "What is a foreign key?",
+      "options": [
+        "A duplicate copy of the whole related row",
+        "A column in one table that holds the primary key of a row in another table, linking them",
+        "A password for the database",
+        "A key that only works in another country's servers"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "A foreign key stores another table's primary-key value to relate the two, so data is referenced once rather than copied.",
+        "wrong": "It isn't a password or a duplicate of the row; the point is to link by reference, not to copy."
+      }
+    },
+    {
+      "id": "cs-m10-03",
+      "concept": "indexes",
+      "type": "mcq",
+      "level": "some",
+      "q": "What does adding an index to a column do?",
+      "options": [
+        "Builds a sorted lookup structure so matching rows are found in ~O(log n) instead of scanning every row, at the cost of space and slower writes",
+        "Deletes duplicate rows automatically",
+        "Guarantees every query is instant with no downsides",
+        "Makes an exact copy of the whole table"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "An index (often a B-tree) lets the database jump to matching rows (~O(log n)) instead of an O(n) scan, paying extra storage and slower writes.",
+        "wrong": "It isn't a copy of the table, it isn't free of downsides, and it doesn't deduplicate rows."
+      }
+    },
+    {
+      "id": "cs-m10-04",
+      "concept": "transactions-acid",
+      "type": "mcq",
+      "level": "all",
+      "q": "A bank transfer debits account A and credits account B inside one transaction. What does this guarantee?",
+      "options": [
+        "Both happen or neither does — they succeed or fail as one unit (atomicity)",
+        "The money moves twice to be safe",
+        "Other users always see the half-finished transfer",
+        "The debit happens even if the credit fails"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "A transaction is all-or-nothing (atomicity): a failure mid-way rolls back, so you never end up debited-but-not-credited.",
+        "wrong": "It never leaves the debit without the credit, doesn't move money twice, and isolation hides half-done work from others."
+      }
+    },
+    {
+      "id": "cs-m10-05",
+      "concept": "transactions-acid",
+      "type": "short",
+      "level": "confident",
+      "q": "ACID stands for Atomicity, Consistency, Isolation, Durability. Pick two and explain what each promises in plain words.",
+      "rubric": [
+        "Atomicity: all operations in a transaction happen or none do (roll back on failure)",
+        "Consistency: the database goes from one valid state to another, with constraints (keys/types) still holding",
+        "Isolation: concurrent transactions don't see each other's half-done work, as if run one at a time",
+        "Durability: once committed, changes survive crashes/power loss"
+      ],
+      "explain": {
+        "right": "Any two correctly explained: all-or-nothing (A), valid-to-valid state (C), concurrent transactions don't interfere (I), committed data survives a crash (D).",
+        "wrong": "A weak answer just expands the letters without saying what each actually promises, or confuses isolation with atomicity."
+      }
+    }
+  ]
+}

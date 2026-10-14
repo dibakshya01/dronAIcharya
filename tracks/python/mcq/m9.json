@@ -1,0 +1,94 @@
+{
+  "module": "py-m9-http-json-api-client",
+  "track": "python",
+  "items": [
+    {
+      "id": "py-m9-01",
+      "concept": "http-status-codes",
+      "type": "mcq",
+      "level": "all",
+      "q": "A GET request returns status code 200. What does that mean, and what does 404 mean?",
+      "options": [
+        "200 = error, 404 = success",
+        "200 = the server is down, 404 = OK",
+        "200 = the request succeeded (OK); 404 = the resource was not found",
+        "Both mean success"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "200 signals success and 404 signals 'not found'; always check the status before trusting the response body.",
+        "wrong": "200 is never an error and 404 is never success; a 5xx (like 500) is the 'server is broken' family."
+      }
+    },
+    {
+      "id": "py-m9-02",
+      "concept": "json-maps-to-python",
+      "type": "mcq",
+      "level": "all",
+      "q": "A JSON object like `{\"city\": \"London\", \"temp_c\": 12}` becomes which Python type when parsed?",
+      "options": [
+        "A list",
+        "A dict",
+        "A string",
+        "A tuple"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "JSON objects (curly braces with key:value pairs) parse into Python dicts; JSON arrays become lists.",
+        "wrong": "It isn't a list, raw string, or tuple — the key:value structure maps directly to a dict."
+      }
+    },
+    {
+      "id": "py-m9-03",
+      "concept": "parsing-json",
+      "type": "mcq",
+      "level": "some",
+      "q": "You have a JSON string in a variable `text`. How do you turn it into a Python dict?",
+      "options": [
+        "json.loads(text)",
+        "int(text)",
+        "str(text)",
+        "json.dumps(text)"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "json.loads parses a JSON string into Python objects (a dict here); with requests, r.json() does the same for a response.",
+        "wrong": "json.dumps goes the other way (Python -> JSON string); str/int don't parse JSON structure."
+      }
+    },
+    {
+      "id": "py-m9-04",
+      "concept": "api-key-safety",
+      "type": "mcq",
+      "level": "all",
+      "q": "An API needs a secret key. Where should the key live?",
+      "options": [
+        "Outside the code (an environment variable or a config file kept out of git), never committed to the repo",
+        "Posted in the project chat",
+        "In the README so teammates can find it",
+        "Hard-coded in the source file and committed to git so it's not lost"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Secrets belong outside source control — in an env var or ignored config file — because anything committed to a repo can leak.",
+        "wrong": "Hard-coding, putting it in the README, or sharing it in chat all expose the secret; this mirrors the Vibecoding 'secrets never in the repo' rule."
+      }
+    },
+    {
+      "id": "py-m9-05",
+      "concept": "api-client-habits",
+      "type": "short",
+      "level": "confident",
+      "q": "Name two things a well-behaved API client should do when making a request, and why.",
+      "rubric": [
+        "Set a timeout so a slow/dead server can't hang the program forever",
+        "Check the status code (or call raise_for_status) before using the body",
+        "Handle failure with try/except and treat the response as data, not instructions"
+      ],
+      "explain": {
+        "right": "Good answers include a timeout, a status check, and graceful failure handling, framing API output as untrusted data.",
+        "wrong": "A weak answer just says 'send the request' without timeout, status check, or error handling."
+      }
+    }
+  ]
+}

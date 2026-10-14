@@ -1,0 +1,94 @@
+{
+  "module": "py-m3-control-flow",
+  "track": "python",
+  "items": [
+    {
+      "id": "py-m3-01",
+      "concept": "range-bounds",
+      "type": "mcq",
+      "level": "all",
+      "q": "What numbers does `for i in range(5):` loop over?",
+      "options": [
+        "0, 1, 2, 3, 4, 5",
+        "0, 1, 2, 3, 4",
+        "5, 4, 3, 2, 1",
+        "1, 2, 3, 4, 5"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "range(5) starts at 0 and stops before 5, yielding 0,1,2,3,4 — five values, but never 5 itself.",
+        "wrong": "It doesn't start at 1, include 5, or count down; the 'start at 0, stop before n' rule is the key gotcha."
+      }
+    },
+    {
+      "id": "py-m3-02",
+      "concept": "assignment-vs-comparison",
+      "type": "mcq",
+      "level": "all",
+      "q": "Inside an `if`, which operator asks 'are these two values equal?'",
+      "options": [
+        "=",
+        "==",
+        ":=",
+        "=>"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "`==` compares two values for equality; it's what belongs in a condition.",
+        "wrong": "A single `=` is assignment (store a value), `=>` isn't a Python operator, and `:=` is the separate walrus (assignment expression)."
+      }
+    },
+    {
+      "id": "py-m3-03",
+      "concept": "while-vs-for",
+      "type": "mcq",
+      "level": "all",
+      "q": "You want to keep showing a menu until the user types 'quit'. Which loop fits best, and why?",
+      "options": [
+        "Neither — you can't loop on user input",
+        "A for loop over range(100) to be safe",
+        "A while loop, because you repeat until a condition changes and don't know how many times",
+        "A for loop, because you know it runs exactly 3 times"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "When you loop an unknown number of times until something changes, a while loop is the natural choice.",
+        "wrong": "You don't know the count ahead of time, so for/range is wrong; and looping on input is exactly what while is for."
+      }
+    },
+    {
+      "id": "py-m3-04",
+      "concept": "is-vs-equals",
+      "type": "mcq",
+      "level": "confident",
+      "q": "To compare two numbers for equality you should use `==`, not `is`. Why?",
+      "options": [
+        "`==` compares values, while `is` asks whether they are the exact same object in memory — which can give surprising False results for numbers and strings",
+        "`is` is slower",
+        "They are identical, it doesn't matter",
+        "`is` only works on booleans"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "`==` tests value equality; `is` tests object identity. They sometimes agree by chance, so using `is` for values is a bug waiting to happen — reserve `is` for `x is None`.",
+        "wrong": "It isn't about speed, they are not identical in meaning, and `is` is not limited to booleans."
+      }
+    },
+    {
+      "id": "py-m3-05",
+      "concept": "while-vs-for",
+      "type": "short",
+      "level": "some",
+      "q": "In one or two sentences, explain the difference between a `while` loop and a `for` loop, and when you'd pick each.",
+      "rubric": [
+        "for loops over a known collection / fixed number of items",
+        "while repeats as long as a condition stays true (unknown count)",
+        "A while needs something that eventually makes the condition false, or it loops forever"
+      ],
+      "explain": {
+        "right": "Good answers pair 'for = iterate a known pile' with 'while = repeat until a condition flips', and mention the infinite-loop risk.",
+        "wrong": "A weak answer says 'they both repeat' without naming known-items vs condition-driven."
+      }
+    }
+  ]
+}

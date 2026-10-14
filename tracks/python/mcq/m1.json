@@ -1,0 +1,94 @@
+{
+  "module": "py-m1-setup-and-first-code",
+  "track": "python",
+  "items": [
+    {
+      "id": "py-m1-01",
+      "concept": "python-is-interpreter",
+      "type": "mcq",
+      "level": "all",
+      "q": "You open a terminal and type `python3 --version`. What does this tell you?",
+      "options": [
+        "Whether the Python interpreter is installed and which version it is",
+        "The version of your operating system",
+        "Which websites Python can visit",
+        "How fast your computer is"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Python is both a language and the interpreter program that runs it; `--version` confirms that program is installed and reports its 3.x version.",
+        "wrong": "It isn't about the web, hardware speed, or the OS version; it only reports the Python interpreter."
+      }
+    },
+    {
+      "id": "py-m1-02",
+      "concept": "repl-vs-script",
+      "type": "mcq",
+      "level": "all",
+      "q": "What is the REPL (the `>>>` prompt you get by running `python3` with no file)?",
+      "options": [
+        "A permanent program that saves all your code automatically",
+        "A website for sharing code",
+        "The only way to run Python",
+        "A place to type one line at a time and see its result instantly, which forgets everything when closed"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "REPL = Read-Evaluate-Print-Loop: it runs one line immediately and shows the result, but keeps nothing after you close it.",
+        "wrong": "It saves nothing, isn't the only way to run Python (files are), and isn't a website."
+      }
+    },
+    {
+      "id": "py-m1-03",
+      "concept": "running-a-file",
+      "type": "mcq",
+      "level": "all",
+      "q": "You run `python3 todo.py`. In what order does Python execute the lines in the file?",
+      "options": [
+        "Only the lines that contain print()",
+        "Bottom to top",
+        "In a random order",
+        "Strictly top to bottom, one line after another"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "The interpreter reads and runs a script top to bottom in order; using something before it's defined fails because that line hasn't run yet.",
+        "wrong": "Execution isn't random, reversed, or limited to print lines — every line runs, in order."
+      }
+    },
+    {
+      "id": "py-m1-04",
+      "concept": "repl-vs-script",
+      "type": "mcq",
+      "level": "some",
+      "q": "In the REPL, typing `2 + 2` and pressing Enter shows `4`. You put the single line `2 + 2` in a file and run it. What appears?",
+      "options": [
+        "2 + 2",
+        "4",
+        "An error",
+        "Nothing — a script doesn't auto-print values; you'd need print(2 + 2)"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "The REPL auto-prints the value of each line; a script only outputs what you explicitly print, so a bare `2 + 2` shows nothing.",
+        "wrong": "It isn't an error and doesn't echo the text; the difference is that files don't auto-print like the REPL does."
+      }
+    },
+    {
+      "id": "py-m1-05",
+      "concept": "repl-vs-script",
+      "type": "short",
+      "level": "some",
+      "q": "In one or two sentences, explain the difference between the REPL and running a `.py` file.",
+      "rubric": [
+        "REPL runs one line at a time and shows the result immediately",
+        "REPL forgets everything when closed; a file is saved and reusable",
+        "A file runs top to bottom and only prints what you tell it to"
+      ],
+      "explain": {
+        "right": "Good answers note the REPL is interactive and throwaway while a file is saved, runs in order, and prints only on request.",
+        "wrong": "A weak answer says only 'one is typing and one is a file' without the saved / auto-print / order distinctions."
+      }
+    }
+  ]
+}

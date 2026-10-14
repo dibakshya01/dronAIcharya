@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>For everyone — dronAIcharya in plain language</title>
+  <meta name="description" content="dronAIcharya explained with no jargon: a patient teacher that builds real software with you on your computer, and makes sure you understand every step.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="For everyone — dronAIcharya in plain language">
+  <meta property="og:description" content="No jargon. A patient teacher that builds real software with you, and makes sure you understand it.">
+  <meta property="og:image" content="assets/social-card.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>(function(){try{var t=localStorage.getItem('dron-theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="dronAIcharya — home">
+        <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+          <circle cx="20" cy="12.5" r="7" stroke-width="2"/>
+          <circle cx="20" cy="12.5" r="2.6" stroke="none" style="fill:var(--accent)"/>
+          <path d="M5 27 C 9 21, 13 17, 17.3 13.9" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M17.3 13.9 L 13 14.6 M17.3 13.9 L 14.9 18.3" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <span>dron<span class="wm-ai">AI</span>charya</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="eli5.html" aria-current="page">For everyone</a></li>
+        <li><a href="docs.html">Docs</a></li>
+        <li><a href="architecture.html">Architecture</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-tools">
+        <a class="icon-btn" href="https://github.com/dibakshya01/dronAIcharya" target="_blank" rel="noopener" aria-label="dronAIcharya on GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.57.1.78-.25.78-.55v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.48.11-3.08 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.6.23 2.78.11 3.08.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14v3.17c0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5Z"/></svg>
+        </button>
+        <button class="icon-btn nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="page-hero" aria-labelledby="eli5-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container" style="position:relative;z-index:1;max-width:48rem">
+        <span class="eyebrow">For everyone · no jargon</span>
+        <h1 id="eli5-title">What is this, in plain words?</h1>
+        <p class="lead">Imagine a patient, friendly teacher sitting next to you while you make something real on your computer. They don't just do it for you — they explain each step, let you make the calls, and gently check that you understood. That's dronAIcharya.</p>
+      </div>
+    </section>
+
+    <section class="section--tight">
+      <div class="container">
+        <div class="prose" data-reveal>
+          <h2>The short version</h2>
+          <p>Lots of tools today will write computer code <em>for</em> you. You get something that works, but you have no idea how or why — so the moment it breaks, you're stuck. Other tools will <em>teach</em> you, but only with tiny practice exercises that never turn into a real, usable thing.</p>
+          <p>dronAIcharya does both at once. It helps you build a <strong>real</strong> piece of software — a little app, a website, a tool — and while you build it, it teaches you what's actually happening, in words you choose: simpler, or deeper, whenever you like.</p>
+          <p>The name comes from <strong>Dronacharya</strong>, a legendary master teacher famous for teaching archery. The idea is the same: a guru who helps you take aim, and makes sure the skill becomes <em>yours</em>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="how-eli5">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">How a session feels</span>
+          <h2 id="how-eli5">A bit like a cooking class with a chef</h2>
+          <p>You're the one cooking. The chef stands beside you, explains why you add the salt now and not later, lets you taste as you go, and asks a quick question to be sure it clicked.</p>
+        </div>
+        <div class="grid grid-3">
+          <div class="card tilt" data-reveal><div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 6h14a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"/></svg></div><h3>It explains first</h3><p>Before anything is built, it tells you what you're about to make and why — in plain language.</p></div>
+          <div class="card tilt" data-reveal data-delay="1"><div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h3>You decide</h3><p>At the important moments it stops and asks what you want. You're always in charge.</p></div>
+          <div class="card tilt" data-reveal data-delay="2"><div class="card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></div><h3>It checks you got it</h3><p>A quick question here and there, so the understanding sticks — not a test, just a nudge.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="say-anytime">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">You stay in control</span>
+          <h2 id="say-anytime">Things you can say, any time</h2>
+          <p>No special commands to memorise. Just talk to it normally.</p>
+        </div>
+        <div class="grid grid-2" style="max-width:48rem" data-reveal>
+          <div class="card tilt"><h3 style="font-size:1.05rem">&ldquo;Explain that more simply&rdquo;</h3><p>It will re-explain like you're five, with everyday examples.</p></div>
+          <div class="card tilt"><h3 style="font-size:1.05rem">&ldquo;Go deeper&rdquo;</h3><p>Want the full picture? It will dig into how it really works.</p></div>
+          <div class="card tilt"><h3 style="font-size:1.05rem">&ldquo;Skip this&rdquo;</h3><p>Not interested right now? It moves on. No lecture.</p></div>
+          <div class="card tilt"><h3 style="font-size:1.05rem">&ldquo;Pause&rdquo; or &ldquo;just do it&rdquo;</h3><p>It always listens. The teaching never traps you.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="honest-eli5">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Being straight with you</span>
+          <h2 id="honest-eli5">A few honest promises</h2>
+        </div>
+        <div style="max-width:48rem">
+          <div class="limit" data-reveal><span class="lx" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span><div><h3>It never spends your money or signs you up</h3><p>When it's time to pay for something, publish, or put in a password, it stops and hands that step to you. You always do the final click.</p></div></div>
+          <div class="limit" data-reveal><span class="lx" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.9 4.2A9 9 0 0 1 21 12M3 12a9 9 0 0 0 14.4 7.2"/><path d="M3 3l18 18"/></svg></span><div><h3>It doesn't phone home</h3><p>No tracking. The secret key you use for the AI stays on your own computer — it never gets sent anywhere.</p></div></div>
+          <div class="limit" data-reveal><span class="lx" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.6 8 11 4.6-2.4 8-6 8-11V5l-8-3Z"/></svg></span><div><h3>It can't promise you'll never get stuck</h3><p>It works hard to keep teaching instead of taking over, but it's a helper, not magic. When you want it to just teach, say so — and it will.</p></div></div>
+          <div class="limit" data-reveal><span class="lx" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></span><div><h3>It's a great start, not a diploma</h3><p>The quizzes are just to help it stick. They're not a certificate, and the computer-science track covers the foundations rather than a full university degree.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="try-eli5">
+      <div class="container">
+        <div class="cta-band" data-reveal>
+          <h2 id="try-eli5">Curious? You don't need to be technical to start.</h2>
+          <p>dronAIcharya runs inside a coding assistant called Claude Code. If that's new to you, the docs walk you through getting set up, one small step at a time.</p>
+          <div class="hero-cta">
+            <a class="btn btn--primary btn--lg" href="docs.html">Getting started</a>
+            <a class="btn btn--ghost btn--lg" href="index.html">Back to home</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="dronAIcharya — home">
+            <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+              <circle cx="20" cy="12.5" r="7" stroke-width="2"/>
+              <circle cx="20" cy="12.5" r="2.6" stroke="none" style="fill:var(--accent)"/>
+              <path d="M5 27 C 9 21, 13 17, 17.3 13.9" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M17.3 13.9 L 13 14.6 M17.3 13.9 L 14.9 18.3" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+            <span>dron<span class="wm-ai">AI</span>charya</span>
+          </a>
+          <p>Your AI guru — learn as you build. A Claude Code plugin (also a skills repo, portable to Cursor) that teaches you while building real software with you.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="eli5.html">For everyone</a></li>
+            <li><a href="docs.html">Docs</a></li>
+            <li><a href="architecture.html">Architecture</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get started</h4>
+          <ul>
+            <li><a href="index.html#install">Install</a></li>
+            <li><a href="docs.html#journey">The journey</a></li>
+            <li><a href="docs.html#commands">Commands</a></li>
+            <li><a href="docs.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Project</h4>
+          <ul>
+            <li><a href="https://github.com/dibakshya01/dronAIcharya" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://github.com/dibakshya01/dronAIcharya/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a></li>
+            <li><a href="https://github.com/dibakshya01/dronAIcharya/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a></li>
+            <li><a href="https://github.com/dibakshya01/dronAIcharya/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>MIT &copy; <span id="year">2026</span> dibakshya01 · No telemetry · Your API key never leaves your machine.</span>
+        <span class="tagline">Built to teach. If it ever stops teaching and starts just doing — say "teach me".</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="copy-live" class="visually-hidden" role="status" aria-live="polite"></div>
+  <script src="assets/main.js" defer></script>
+</body>
+</html>

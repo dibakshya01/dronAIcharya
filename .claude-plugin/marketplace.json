@@ -1,0 +1,18 @@
+{
+  "name": "dronaicharya",
+  "owner": { "name": "dibakshya01", "url": "https://github.com/dibakshya01" },
+  "description": "dronAIcharya — your AI guru: learn as you build.",
+  "metadata": {
+    "description": "A single-plugin marketplace that serves dronAIcharya from this repository.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "dronaicharya",
+      "source": "./",
+      "description": "Guided teach-and-build journey in Claude Code: teacher personas, four learning tracks, MCQ knowledge checks, anti-drift guardrails, a production SDLC, and an optional MCP backend.",
+      "category": "education",
+      "tags": ["teaching", "learning", "vibecoding", "python", "security", "mentor"]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "module": "sec-m1-security-mindset",
+  "track": "cyber-ai-security",
+  "items": [
+    {
+      "id": "sec-m1-01",
+      "concept": "security-is-designed-in",
+      "type": "mcq",
+      "level": "all",
+      "q": "Which statement best reflects the security mindset?",
+      "options": [
+        "Security is only a concern for big companies and banks",
+        "Security means hiding how your system works so attackers can't figure it out",
+        "Security is a property of how the system is built, so you design for it from the start",
+        "Security is a feature you add at the end, right before launch"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "Security is a property of the design, not a bolt-on; you hold the defender's and attacker's viewpoints from the start.",
+        "wrong": "Bolting it on late is costly and leaky, hiding how things work ('obscurity') isn't security, and small apps get attacked too (bots scan everything)."
+      }
+    },
+    {
+      "id": "sec-m1-02",
+      "concept": "security-through-obscurity",
+      "type": "mcq",
+      "level": "all",
+      "q": "Your plan is: 'nobody knows the secret admin URL, so it's safe.' What's wrong with relying on this?",
+      "options": [
+        "Nothing — a hidden URL is a strong defense",
+        "Hidden URLs are fine as long as the site uses HTTPS",
+        "It only fails if you tell someone the URL",
+        "It's 'security through obscurity'; assume the attacker can discover how your system works, so the defense must hold anyway"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Obscurity isn't security: assume the attacker can read your code and find hidden paths, so real access control must protect the page.",
+        "wrong": "Hidden URLs leak through logs, referrers, and scanning; HTTPS protects the pipe, not the fact that the page is unprotected."
+      }
+    },
+    {
+      "id": "sec-m1-03",
+      "concept": "assets-threats-boundaries",
+      "type": "mcq",
+      "level": "all",
+      "q": "In threat modeling, a 'trust boundary' is:",
+      "options": [
+        "A line where data crosses between something you control and something you don't (e.g. browser → your server)",
+        "The firewall around your office",
+        "A list of users you trust",
+        "The maximum number of requests allowed per second"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Trust boundaries are where data crosses in or out of your control; attacks concentrate there, so that's where you validate and authorize.",
+        "wrong": "It isn't a user list, a physical firewall, or a rate limit — it's the conceptual line where trust changes."
+      }
+    },
+    {
+      "id": "sec-m1-04",
+      "concept": "threat-model-questions",
+      "type": "mcq",
+      "level": "some",
+      "q": "A lightweight threat model is essentially which set of questions?",
+      "options": [
+        "How many users do we expect and how fast must the site load?",
+        "Who are my competitors and what features do they have?",
+        "Which antivirus should I buy, and how much does it cost?",
+        "What are we building? What can go wrong? What will we do about it? Did we do a good job?"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Those four questions are a real, usable threat model — specific to your app, they focus effort on the risks that matter.",
+        "wrong": "Antivirus, competitors, and performance are real concerns but aren't what threat modeling asks."
+      }
+    },
+    {
+      "id": "sec-m1-05",
+      "concept": "attacker-and-defender",
+      "type": "short",
+      "level": "some",
+      "q": "Pick one feature of your app and write one 'what would an attacker try?' question about it, plus the asset it threatens.",
+      "rubric": [
+        "Names a concrete feature (e.g. 'view my profile', a login, a search box)",
+        "States a plausible attacker attempt (see another user's data, send weird input, guess a password)",
+        "Identifies the asset at risk (private data, account access, availability)"
+      ],
+      "explain": {
+        "right": "Strong answers pair a specific attacker attempt with the concrete asset it would harm — that's the defender+attacker view in action.",
+        "wrong": "A weak answer stays vague ('someone could hack it') without naming the attempt or the asset."
+      }
+    }
+  ]
+}

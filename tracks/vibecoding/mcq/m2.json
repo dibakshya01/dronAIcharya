@@ -1,0 +1,76 @@
+{
+  "module": "vibe-m2-prompting-and-context",
+  "track": "vibecoding",
+  "items": [
+    {
+      "id": "vibe-m2-01",
+      "concept": "context-window",
+      "type": "mcq",
+      "level": "all",
+      "q": "What is the 'context window'?",
+      "options": [
+        "The model's permanent long-term memory of you",
+        "The time of day the model works best",
+        "Everything the model can currently see and use — messages, shown files, tool results — with a size limit",
+        "The app window where you type"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "The context window is the limited set of text the model can see right now; anything outside it effectively doesn't exist for it.",
+        "wrong": "It isn't a UI element or permanent memory; the model has no persistent memory of you across the window being cleared."
+      }
+    },
+    {
+      "id": "vibe-m2-02",
+      "concept": "good-prompting",
+      "type": "mcq",
+      "level": "all",
+      "q": "You want the AI to fix a bug in your file. Which prompt will most reliably work?",
+      "options": [
+        "\"Fix my code, it's broken.\"",
+        "Paste the file + the exact error + what it should do instead",
+        "\"Make it better.\"",
+        "\"You should already know what I mean.\""
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Specific goal + the actual material (file + error) gives the model what it needs to predict a correct fix.",
+        "wrong": "Vague requests with no context force the model to guess, which invites wrong or generic answers."
+      }
+    },
+    {
+      "id": "vibe-m2-03",
+      "concept": "context-cost-drift",
+      "type": "mcq",
+      "level": "some",
+      "q": "Why can a very long chat start giving worse answers?",
+      "options": [
+        "Early details fall out of the context window as it fills, so the model loses the thread",
+        "Long chats are always better, this never happens",
+        "The internet slows down",
+        "The model gets tired"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "As the window fills, older content is summarized or dropped, so the model can lose earlier details and drift.",
+        "wrong": "Models don't tire, and more history is not automatically better — relevance beats volume."
+      }
+    },
+    {
+      "id": "vibe-m2-04",
+      "concept": "good-prompting",
+      "type": "short",
+      "level": "all",
+      "q": "Rewrite this weak prompt to be good: 'make the login nicer'. What would you add?",
+      "rubric": [
+        "Adds specificity (what 'nicer' means concretely)",
+        "Provides the relevant material (the file/component, a screenshot or example)",
+        "States the desired outcome / acceptance"
+      ],
+      "explain": {
+        "right": "Strong answers add concrete specifics and hand over the actual file/example plus the intended result.",
+        "wrong": "Just saying 'add please' or more adjectives isn't enough — specificity and material are the point."
+      }
+    }
+  ]
+}

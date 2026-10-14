@@ -1,0 +1,96 @@
+{
+  "module": "sec-m4-owasp-top10-part1",
+  "track": "cyber-ai-security",
+  "items": [
+    {
+      "id": "sec-m4-01",
+      "concept": "what-is-owasp-top10",
+      "type": "mcq",
+      "level": "all",
+      "q": "What is the OWASP Top 10?",
+      "options": [
+        "A law that web apps must legally comply with",
+        "A free, data-driven list of the most common and impactful web application security risks, refreshed periodically",
+        "A ranking of the most popular web frameworks",
+        "A paid security certification for developers"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "It's a widely used, free list from OWASP of the most common web risks, updated every few years (current edition: 2025) — a shared checklist, not a law or cert.",
+        "wrong": "It isn't legislation, a certification, or a framework ranking; it's guidance drawn from real-world data."
+      }
+    },
+    {
+      "id": "sec-m4-02",
+      "concept": "injection-root-cause",
+      "type": "mcq",
+      "level": "all",
+      "q": "What is the root cause of an injection vulnerability like SQL injection?",
+      "options": [
+        "The user's internet connection is insecure",
+        "Untrusted input is mixed into a command or query so it's treated as code instead of data",
+        "The database is too old",
+        "The server runs too slowly to check input"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Injection happens when data and code get mixed in one string, so attacker input changes the command/query itself.",
+        "wrong": "It's not about speed, database age, or the user's connection — it's the code/data mixing."
+      }
+    },
+    {
+      "id": "sec-m4-03",
+      "concept": "injection-fix",
+      "type": "mcq",
+      "level": "all",
+      "q": "What's the most reliable fix for SQL injection?",
+      "options": [
+        "Use parameterized queries (placeholders) so the database always treats user values as data, never as query structure",
+        "Hide the database behind a secret port",
+        "Filter out 'bad' characters like quotes from user input",
+        "Trust input from logged-in users since they're authenticated"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Parameterized queries separate code from data structurally, so input can never change the query — the real fix.",
+        "wrong": "Blocklisting characters is fragile (encodings slip through), a secret port is obscurity, and authenticated users can still be malicious or compromised."
+      }
+    },
+    {
+      "id": "sec-m4-04",
+      "concept": "broken-access-control",
+      "type": "mcq",
+      "level": "all",
+      "q": "A user changes /invoice/123 to /invoice/124 in the URL and sees someone else's invoice. This is:",
+      "options": [
+        "Impossible if the site uses HTTPS",
+        "Broken access control (an IDOR) — the server didn't check that the invoice belongs to this user",
+        "Fine, because the user was logged in",
+        "A problem only if the invoice contained a password"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "The server must verify ownership on every object access; without it, changing an ID exposes other users' data — broken access control, #1 on the 2025 list.",
+        "wrong": "Being logged in isn't authorization for that specific record, any exposed data counts, and HTTPS only protects transit."
+      }
+    },
+    {
+      "id": "sec-m4-05",
+      "concept": "authz-server-side",
+      "type": "mcq",
+      "level": "some",
+      "q": "Your app 'hides' the admin page by not showing a link to it in the menu. Is that access control?",
+      "options": [
+        "Yes — if users can't see the link, they can't reach it",
+        "Yes, as long as the URL is hard to guess",
+        "Only an issue for pages that change data",
+        "No — the attacker doesn't use your menu; authorization must be enforced on the server for the endpoint itself"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Hiding a UI link is not access control; the server must check 'is this user allowed?' on the endpoint, because requests can be made directly.",
+        "wrong": "Attackers bypass the UI and guess or discover URLs; obscurity and 'read-only' pages still leak if unprotected."
+      }
+    }
+  ]
+}

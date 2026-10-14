@@ -1,0 +1,94 @@
+{
+  "module": "cs-m2-memory",
+  "track": "cs-from-scratch",
+  "items": [
+    {
+      "id": "cs-m2-01",
+      "concept": "variables-in-memory",
+      "type": "mcq",
+      "level": "all",
+      "q": "What is a variable, in terms of memory?",
+      "options": [
+        "The physical hardware chip itself",
+        "A value that can never change",
+        "A human-friendly name for a place in memory that holds a value",
+        "A permanent record saved to disk"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "A variable is a name bound to a location in memory holding a value, so you can refer to it without knowing its address.",
+        "wrong": "Variables live in temporary memory, not on disk; they aren't the chip, and most variables can change."
+      }
+    },
+    {
+      "id": "cs-m2-02",
+      "concept": "stack-vs-heap",
+      "type": "mcq",
+      "level": "some",
+      "q": "Which statement about the stack and the heap is correct?",
+      "options": [
+        "The stack holds per-function-call data and is managed automatically; the heap is a flexible pool for longer-lived data",
+        "Local variables are normally stored on the heap",
+        "The stack is a large pool for long-lived data; the heap tracks function calls",
+        "The heap is always faster than the stack"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "The stack holds call frames/locals and grows and shrinks automatically with calls; the heap is the flexible region for data whose lifetime isn't tied to one call.",
+        "wrong": "The roles are reversed in the other options; the stack is typically the fast one, and locals/call bookkeeping live on the stack, not the heap."
+      }
+    },
+    {
+      "id": "cs-m2-03",
+      "concept": "pointers-references",
+      "type": "mcq",
+      "level": "all",
+      "q": "In Python, you run: a = [1, 2, 3]; b = a; b.append(4). What is a now?",
+      "options": [
+        "An error occurs",
+        "[1, 2, 3, 4] — a and b reference the same list",
+        "[4] — appending replaced the list",
+        "[1, 2, 3] — b got its own copy"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "b = a copies the reference, not the list, so a and b are two names for one list; appending through b is visible through a.",
+        "wrong": "No copy is made by b = a for a list, so a changes too; append adds to the existing list rather than replacing it, and it's valid code."
+      }
+    },
+    {
+      "id": "cs-m2-04",
+      "concept": "pointers-references",
+      "type": "mcq",
+      "level": "all",
+      "q": "A 'reference' (or pointer) to some data is best described as:",
+      "options": [
+        "A second copy of the data",
+        "The data converted to text",
+        "The address of where the data lives, not the data itself",
+        "A backup saved automatically"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "A reference holds the location of the data; following it reaches the one underlying object, which is why two references can change the same thing.",
+        "wrong": "A reference is not a copy or a backup, and it doesn't convert the data to text; it just points at where it is."
+      }
+    },
+    {
+      "id": "cs-m2-05",
+      "concept": "stack-vs-heap",
+      "type": "short",
+      "level": "confident",
+      "q": "In your own words, why does assigning b = a sometimes feel like 'a changed by itself' for a list but not for a number?",
+      "rubric": [
+        "Explains b = a copies a reference (address), not the contents, for an object like a list",
+        "Notes both names then point at the same underlying object, so a mutation through one is seen via the other",
+        "Contrasts with rebinding/simple values where the two names end up independent"
+      ],
+      "explain": {
+        "right": "Strong answers center on reference-copying and shared/aliased objects: both names reach one list, so mutating it shows up through either name.",
+        "wrong": "A weak answer says 'Python is buggy' or 'it copied the number but not the list' without the reference-vs-value idea."
+      }
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "module": "vibe-m6-reading-trusting-output",
+  "track": "vibecoding",
+  "items": [
+    {
+      "id": "vibe-m6-01",
+      "concept": "reading-generated-code",
+      "type": "mcq",
+      "level": "all",
+      "q": "You can't fully understand every line of the code the AI wrote. Where should you focus your reading?",
+      "options": [
+        "Every line equally, or don't review at all",
+        "The parts that touch your data, files, money, or secrets — and whether the shape and names match what you asked",
+        "Only the comments",
+        "Nothing — if it runs, it's fine"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Skim the plumbing, read closely the parts that can hurt you, and check the pieces and names match your intent.",
+        "wrong": "You don't need every line, comments aren't the truth, and 'it runs' alone doesn't mean it's safe or correct."
+      }
+    },
+    {
+      "id": "vibe-m6-02",
+      "concept": "trust-checklist",
+      "type": "mcq",
+      "level": "all",
+      "q": "What are the three trust checks before relying on generated code?",
+      "options": [
+        "Does it run, is it safe, does it do what the spec says",
+        "Did the AI sound confident, is it formatted nicely, is it recent",
+        "Is it long, is it clever, is it well-commented",
+        "Is it short, is it fast, is it popular"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Runs, safe, correct — execute it, scan for anything dangerous, then check it against your acceptance criteria.",
+        "wrong": "Length, cleverness, confidence, and formatting say nothing about whether code works or is safe."
+      }
+    },
+    {
+      "id": "vibe-m6-03",
+      "concept": "invented-api",
+      "type": "mcq",
+      "level": "all",
+      "q": "The AI's code calls a function and running it errors with 'is not a function'. Most likely explanation?",
+      "options": [
+        "You need to switch programming languages",
+        "That library is always wrong and should never be used",
+        "Your computer is broken",
+        "The model invented a plausible-but-nonexistent API — a hallucination to verify against the real docs"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Because it predicts plausible text, the model can confidently invent APIs; running the code is what exposes them.",
+        "wrong": "It's not your machine, the whole library, or your language at fault — it's a made-up call to check and replace."
+      }
+    },
+    {
+      "id": "vibe-m6-04",
+      "concept": "grounding-fix",
+      "type": "mcq",
+      "level": "some",
+      "q": "What best reduces invented-API (hallucinated) answers?",
+      "options": [
+        "Trust it more when it sounds confident",
+        "Give it the real documentation (or let it fetch the docs with a tool) and run the code",
+        "Ask the model more forcefully",
+        "Write a longer prompt"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Grounding it in real docs plus actually executing the code catches invented calls — confident tone doesn't.",
+        "wrong": "Forceful or longer prompts and trusting confidence don't add real facts; grounding and running do."
+      }
+    },
+    {
+      "id": "vibe-m6-05",
+      "concept": "trust-checklist",
+      "type": "short",
+      "level": "all",
+      "q": "Name two things you check before trusting code the AI wrote, and why each matters.",
+      "rubric": [
+        "Names at least two of: does it run, is it safe, does it match the spec",
+        "Explains that running catches errors/invented APIs",
+        "Explains that 'safe' guards against secrets/destructive actions, and 'matches spec' means it meets the acceptance criteria"
+      ],
+      "explain": {
+        "right": "Strong answers pick two real checks (e.g. run it to catch invented APIs; verify it against the spec) with reasons.",
+        "wrong": "A weak answer lists vague traits like 'looks clean' without tying them to runs/safe/correct."
+      }
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "module": "py-m8-modules-packages-venvs",
+  "track": "python",
+  "items": [
+    {
+      "id": "py-m8-01",
+      "concept": "standard-library-import",
+      "type": "mcq",
+      "level": "all",
+      "q": "You write `import json` and it works without installing anything. Why?",
+      "options": [
+        "You must have installed it earlier without noticing",
+        "json was downloaded automatically from the internet",
+        "json is part of Python's standard library, which ships with the interpreter — no install needed",
+        "Every import works without installing"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "The standard library (json, datetime, os, ...) comes bundled with Python, so those modules import directly.",
+        "wrong": "It isn't fetched on the fly, and not every module is built in — third-party ones need pip install first."
+      }
+    },
+    {
+      "id": "py-m8-02",
+      "concept": "pip-third-party",
+      "type": "mcq",
+      "level": "all",
+      "q": "`import requests` raises `ModuleNotFoundError`. What's the most likely fix?",
+      "options": [
+        "Add `requests = True` to your code",
+        "Restart the computer",
+        "Rename your file",
+        "Run `pip install requests` in the terminal — requests is a third-party package, not part of the standard library"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "requests is third-party, so it must be installed with pip (ideally into your project's venv) before you can import it.",
+        "wrong": "Restarting, renaming, or assigning a variable won't make an uninstalled package importable."
+      }
+    },
+    {
+      "id": "py-m8-03",
+      "concept": "venv-isolation",
+      "type": "mcq",
+      "level": "some",
+      "q": "What problem does a virtual environment (venv) solve?",
+      "options": [
+        "It gives each project its own private set of packages, so projects needing different versions don't clash",
+        "It makes Python run faster",
+        "It automatically writes your tests",
+        "It connects your code to the internet"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "A venv isolates a project's packages so one project's versions never break another's — the cure for shared, conflicting installs.",
+        "wrong": "A venv doesn't affect speed, networking, or testing; its whole job is per-project isolation."
+      }
+    },
+    {
+      "id": "py-m8-04",
+      "concept": "module-shadowing",
+      "type": "mcq",
+      "level": "confident",
+      "q": "You save your own script as `json.py` and then `import json`. What's the likely problem?",
+      "options": [
+        "It always errors immediately",
+        "Nothing, filenames never matter",
+        "It deletes the standard library",
+        "Python may import YOUR file instead of the standard-library json, breaking json.dumps and friends"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Python searches the current directory first, so a file named json.py can shadow the real module; never name files after modules you import.",
+        "wrong": "Filenames do matter for imports, nothing is deleted, and the breakage shows up when you use the module, not always at import."
+      }
+    }
+  ]
+}

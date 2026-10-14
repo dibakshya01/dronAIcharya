@@ -1,0 +1,94 @@
+{
+  "module": "vibe-m8-tradeoffs-when-ai-is-wrong",
+  "track": "vibecoding",
+  "items": [
+    {
+      "id": "vibe-m8-01",
+      "concept": "tradeoffs-exist",
+      "type": "mcq",
+      "level": "all",
+      "q": "For most build decisions, 'what's best' usually:",
+      "options": [
+        "Depends on your goal — the options trade off against each other (simple vs. flexible, cheap vs. scalable)",
+        "Means picking the newest technology",
+        "Has one correct answer the AI already knows",
+        "Doesn't matter, so just accept the first suggestion"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Options are better at some things and worse at others; naming the tradeoff lets you choose with eyes open.",
+        "wrong": "There's rarely one right answer, 'newest' isn't automatically best, and accepting the first option blindly hides the tradeoff."
+      }
+    },
+    {
+      "id": "vibe-m8-02",
+      "concept": "human-only-decisions",
+      "type": "mcq",
+      "level": "all",
+      "q": "Which decision should a human keep, rather than hand fully to the AI?",
+      "options": [
+        "Which comment style to use",
+        "How to indent the code",
+        "Choosing a variable name",
+        "Deleting real user data, spending money, or deploying publicly"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Security, real data, money, and irreversible actions are decisions of consequence the human owns.",
+        "wrong": "Naming, indentation, and comment style are low-stakes and reversible — fine to delegate."
+      }
+    },
+    {
+      "id": "vibe-m8-03",
+      "concept": "why-human-decides",
+      "type": "mcq",
+      "level": "some",
+      "q": "Why keep irreversible, security, money, and data decisions with the human?",
+      "options": [
+        "It's purely a legal requirement",
+        "The AI isn't smart enough to understand them",
+        "The AI predicts plausible actions, and plausible isn't the same as safe — especially for things you can't undo",
+        "Humans are simply faster at deciding"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "A model generates likely-looking actions; for consequential, can't-undo steps you want human judgment, not just plausibility.",
+        "wrong": "It's not about raw intelligence, law, or speed — it's that plausible output can still be unsafe or irreversible."
+      }
+    },
+    {
+      "id": "vibe-m8-04",
+      "concept": "staying-in-the-loop",
+      "type": "mcq",
+      "level": "all",
+      "q": "What does 'staying in the loop' on a consequential change mean in practice?",
+      "options": [
+        "Understand it well enough to restate it before approving; do it in small reversible steps and commit first",
+        "Let the AI auto-approve its own changes",
+        "Avoid all risky changes forever",
+        "Approve quickly so you keep momentum"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "If you can't explain it in your own words, don't approve it yet — and keep a commit so it's reversible.",
+        "wrong": "Rubber-stamping or auto-approving defeats the point, and you don't have to avoid risk entirely — just stay the decider."
+      }
+    },
+    {
+      "id": "vibe-m8-05",
+      "concept": "human-only-decisions",
+      "type": "short",
+      "level": "all",
+      "q": "Name one decision you'd never fully hand to the AI, and say why.",
+      "rubric": [
+        "Names a security, real-data, money, or irreversible decision (e.g. deleting user data, deploying publicly, a payment)",
+        "Explains the stakes: can't be undone / safety / cost / real people's data",
+        "Implies the human should decide/approve it, with the AI advising at most"
+      ],
+      "explain": {
+        "right": "Strong answers pick a consequential, hard-to-undo action and explain the stakes that make it the human's call.",
+        "wrong": "A weak answer names a trivial, reversible choice (like a variable name) that's fine to delegate."
+      }
+    }
+  ]
+}

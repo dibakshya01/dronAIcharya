@@ -1,0 +1,30 @@
+# dronAIcharya learner state (per-project journey) — never commit a learner's progress/journal.
+# These can contain personal notes and must never capture secrets.
+.dronacharya/
+
+# Environment & secrets — NEVER commit API keys. (Also taught as a lesson in dronAIcharya.)
+.env
+.env.*
+*.key
+*.pem
+secrets.*
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Build / deps
+node_modules/
+dist/
+build/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# purple-sparrow local binary (if a learner builds it in-tree)
+purplesparrow
+*.db

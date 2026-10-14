@@ -1,0 +1,94 @@
+{
+  "module": "cs-m7-recursion",
+  "track": "cs-from-scratch",
+  "items": [
+    {
+      "id": "cs-m7-01",
+      "concept": "base-and-recursive-case",
+      "type": "mcq",
+      "level": "all",
+      "q": "Every correct recursion needs which two parts?",
+      "options": [
+        "A try and a catch",
+        "A loop and a counter",
+        "A compiler and an interpreter",
+        "A base case that stops, and a recursive case that moves toward the base case"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "The base case is where it stops without calling itself; the recursive case does a bit of work and calls itself on a smaller input, approaching the base case.",
+        "wrong": "Loops/counters, error handling, and compilers are unrelated to the base/recursive-case structure recursion requires."
+      }
+    },
+    {
+      "id": "cs-m7-02",
+      "concept": "missing-base-case",
+      "type": "mcq",
+      "level": "all",
+      "q": "What happens if a recursive function never reaches its base case?",
+      "options": [
+        "It runs faster because there's no stopping check",
+        "The compiler silently fixes it",
+        "It returns 0 by default",
+        "It keeps calling itself, piling up stack frames until the stack overflows and it crashes"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Each call adds a stack frame; with no base case they accumulate until the call stack is exhausted (a stack overflow / RecursionError).",
+        "wrong": "There's no default return, no automatic fix, and runaway recursion crashes rather than speeding up."
+      }
+    },
+    {
+      "id": "cs-m7-03",
+      "concept": "call-stack",
+      "type": "mcq",
+      "level": "some",
+      "q": "What does the call stack have to do with recursion?",
+      "options": [
+        "Each recursive call pushes a frame holding its own variables; frames pop as calls return",
+        "Recursion runs entirely on the heap",
+        "Nothing — recursion uses no extra memory",
+        "The stack stores the final answer only"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Every call gets its own stack frame (its locals and return point); they stack up on the way down and pop on the way back up.",
+        "wrong": "Recursion costs O(n) stack frames for depth n; the stack holds each in-progress call, not just the final answer."
+      }
+    },
+    {
+      "id": "cs-m7-04",
+      "concept": "when-to-use",
+      "type": "mcq",
+      "level": "some",
+      "q": "Which task is recursion most naturally suited to?",
+      "options": [
+        "Walking a tree-shaped structure like nested folders or nested JSON",
+        "Incrementing a counter",
+        "Summing a flat list of a million numbers",
+        "Printing 'hello' once"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Recursion fits naturally recursive/tree-shaped data, where each part contains smaller parts of the same shape.",
+        "wrong": "Flat, linear, or one-off work is usually clearer and safer with a simple loop or statement than with recursion."
+      }
+    },
+    {
+      "id": "cs-m7-05",
+      "concept": "when-to-use",
+      "type": "short",
+      "level": "confident",
+      "q": "Give one reason you might rewrite a deep recursion as a loop in Python.",
+      "rubric": [
+        "Notes recursion consumes a stack frame per call (O(n) stack space)",
+        "Mentions Python's recursion depth limit / risk of stack overflow (RecursionError) on deep inputs",
+        "Concludes a loop avoids that by using constant stack space"
+      ],
+      "explain": {
+        "right": "Good answers cite stack-depth limits / overflow risk and the per-call frame cost, so a loop (O(1) stack) is safer for deep inputs.",
+        "wrong": "A weak answer says 'loops are just better' with no mention of the stack-depth or memory reason."
+      }
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "module": "vibe-m5-build-with-ai",
+  "track": "vibecoding",
+  "items": [
+    {
+      "id": "vibe-m5-01",
+      "concept": "tracer-bullet",
+      "type": "mcq",
+      "level": "all",
+      "q": "What is a 'tracer bullet' in this build method?",
+      "options": [
+        "A test that checks every feature at once",
+        "The fastest-running version of the app",
+        "One thin slice that goes end-to-end through every layer, built before anything wide",
+        "The final, polished user interface"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "A tracer bullet is a skinny path through all layers (e.g. button → stored → shown) to prove the whole thing connects early.",
+        "wrong": "It's not about speed, polish, or testing everything — it's the thinnest complete path, built first."
+      }
+    },
+    {
+      "id": "vibe-m5-02",
+      "concept": "tracer-bullet-why",
+      "type": "mcq",
+      "level": "all",
+      "q": "Why build a thin end-to-end slice before building the app 'wide'?",
+      "options": [
+        "Building wide first is always faster",
+        "It proves the whole path connects and surfaces risky unknowns while the app is still tiny and easy to change",
+        "It looks more impressive to show off",
+        "So the user interface is pretty before anything works"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Going thin-but-complete de-risks the connections early, while fixes are cheap — the opposite of a pretty front end wired to nothing.",
+        "wrong": "'Wide first' and 'UI first' are the classic beginner traps; the goal is de-risking, not appearance."
+      }
+    },
+    {
+      "id": "vibe-m5-03",
+      "concept": "review-each-change",
+      "type": "mcq",
+      "level": "all",
+      "q": "What's the best way to let the AI build your app?",
+      "options": [
+        "Never look at the code since you can't read it anyway",
+        "Let it run unattended and check back in an hour",
+        "Accept one giant code dump and hope it works",
+        "Ask for one small change at a time and review each before the next"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Small, reviewed steps keep the blast radius small — if something breaks you know which change did it.",
+        "wrong": "Big dumps and unattended runs leave you unable to review or locate problems; you stay the driver."
+      }
+    },
+    {
+      "id": "vibe-m5-04",
+      "concept": "commit-often",
+      "type": "mcq",
+      "level": "all",
+      "q": "Why commit (save a snapshot) after each working step?",
+      "options": [
+        "It deploys the app to the internet",
+        "You always have a recent known-good point to roll back to if the next change breaks something",
+        "It's the only way to run the code",
+        "It makes the app run faster"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Frequent commits are checkpoints: when a later change breaks things, you return to the last good snapshot.",
+        "wrong": "Committing doesn't affect speed, deploy, or whether code runs — it's your safety net of save points."
+      }
+    },
+    {
+      "id": "vibe-m5-05",
+      "concept": "running-proves-it",
+      "type": "short",
+      "level": "some",
+      "q": "Why isn't a feature 'done' just because the AI wrote it and the code looks right?",
+      "rubric": [
+        "Reading code is a guess; you must actually run/execute it",
+        "You observe the real behavior (screen, terminal, logs)",
+        "You verify it against the spec / acceptance criteria"
+      ],
+      "explain": {
+        "right": "Good answers say you only know it works by running it and watching it behave, then checking it against the spec.",
+        "wrong": "A weak answer trusts that code which 'looks right' is correct — running it is what proves it."
+      }
+    }
+  ]
+}

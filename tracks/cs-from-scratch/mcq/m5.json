@@ -1,0 +1,94 @@
+{
+  "module": "cs-m5-maps-trees-graphs",
+  "track": "cs-from-scratch",
+  "items": [
+    {
+      "id": "cs-m5-01",
+      "concept": "hash-map",
+      "type": "mcq",
+      "level": "all",
+      "q": "What makes a hash map's lookup by key fast on average?",
+      "options": [
+        "It stores everything twice for redundancy",
+        "A hash function turns the key into a number that points straight to the right bucket",
+        "It keeps all keys sorted and binary-searches them",
+        "It checks every stored key until it finds a match"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Hashing the key gives an index into the internal array, so the map jumps straight to the bucket, giving average O(1) lookup.",
+        "wrong": "It doesn't need sorting or a full scan, and it doesn't duplicate everything; the hash-to-bucket jump is the key idea."
+      }
+    },
+    {
+      "id": "cs-m5-02",
+      "concept": "hash-map",
+      "type": "mcq",
+      "level": "some",
+      "q": "Hash map lookups are 'O(1)' in which sense?",
+      "options": [
+        "Only if the map has fewer than 100 items",
+        "On average; the worst case can degrade toward O(n) when many keys collide",
+        "O(1) for reads but O(n) for every write",
+        "Always exactly one step, guaranteed, no matter what"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "It's average-case O(1); heavy collisions (many keys in one bucket) can push the worst case toward O(n).",
+        "wrong": "It isn't a hard guarantee or size-limited, and writes are also average O(1), not O(n)."
+      }
+    },
+    {
+      "id": "cs-m5-03",
+      "concept": "tree",
+      "type": "mcq",
+      "level": "all",
+      "q": "A balanced binary search tree can find an item in about O(log n) steps because:",
+      "options": [
+        "Trees are stored contiguously like arrays",
+        "Each comparison discards about half the remaining items (go left or right)",
+        "It checks every node once",
+        "It hashes the value to a bucket"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "At each node you go left or right, halving the remaining search space, so a balanced tree takes about log n steps.",
+        "wrong": "It doesn't visit every node, isn't stored like an array, and doesn't hash; the halving is what gives O(log n)."
+      }
+    },
+    {
+      "id": "cs-m5-04",
+      "concept": "graph",
+      "type": "mcq",
+      "level": "all",
+      "q": "Which problem is most naturally a graph problem?",
+      "options": [
+        "Finding the shortest route between two cities connected by roads",
+        "Looking up a phone number by a person's exact name",
+        "Storing a single sorted list of numbers",
+        "Keeping a running total of a counter"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Cities as nodes and roads as edges is a graph; shortest-path between connected things is a classic graph problem.",
+        "wrong": "Exact-key lookup suits a hash map, and a sorted list or a counter don't involve arbitrary connections between items."
+      }
+    },
+    {
+      "id": "cs-m5-05",
+      "concept": "choosing-structure",
+      "type": "short",
+      "level": "some",
+      "q": "Match each to a good use: hash map, tree, graph. Give one use each.",
+      "rubric": [
+        "Hash map: fast lookup of a value by a unique key (e.g. user by id)",
+        "Tree: a hierarchy or sorted data searchable by halving (e.g. file system, sorted index)",
+        "Graph: modeling relationships/networks and moving between connected things (e.g. social network, maps/routing)"
+      ],
+      "explain": {
+        "right": "Strong answers pair map→key lookup, tree→hierarchy/sorted search, graph→relationships/networks, each with a concrete example.",
+        "wrong": "A weak answer swaps them (e.g. 'use a graph to look up by key') or gives no example showing the fit."
+      }
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "module": "cs-m3-how-programs-run",
+  "track": "cs-from-scratch",
+  "items": [
+    {
+      "id": "cs-m3-01",
+      "concept": "compile-vs-interpret",
+      "type": "mcq",
+      "level": "all",
+      "q": "What is the core difference between compiling and interpreting?",
+      "options": [
+        "Interpreted languages never produce any machine code at any point",
+        "A compiler translates the whole program to machine code ahead of time; an interpreter carries out the source as it runs",
+        "Compiled languages don't need a CPU",
+        "Compiling runs the program; interpreting only checks it for errors"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Compiling translates everything up front into a runnable file; interpreting translates and executes the source while running.",
+        "wrong": "Both ultimately result in machine code running on the CPU; interpreting isn't just error-checking, and all programs need a CPU."
+      }
+    },
+    {
+      "id": "cs-m3-02",
+      "concept": "machine-code",
+      "type": "mcq",
+      "level": "all",
+      "q": "Machine code is best described as:",
+      "options": [
+        "Simple numeric instructions a specific CPU executes directly",
+        "The comments a programmer writes",
+        "Another word for the Python or JavaScript you type",
+        "A universal format every CPU runs identically"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Machine code is the low-level numeric instructions the CPU runs directly, and it's specific to a CPU architecture (x86 vs ARM differ).",
+        "wrong": "It isn't your high-level source or comments, and it isn't universal; different architectures have different machine codes."
+      }
+    },
+    {
+      "id": "cs-m3-03",
+      "concept": "cpu-loop",
+      "type": "mcq",
+      "level": "all",
+      "q": "At the lowest level, a CPU runs programs by repeatedly doing what?",
+      "options": [
+        "Guessing the answer and checking later",
+        "Reading the whole program into one giant instruction and solving it",
+        "Asking the operating system to think for it",
+        "Fetch an instruction, decode it, execute it, then move to the next — over and over"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "The CPU repeats the fetch-decode-execute cycle billions of times a second, advancing through instructions in memory.",
+        "wrong": "It doesn't solve a program in one step or outsource thinking; everything is tiny sequential instructions."
+      }
+    },
+    {
+      "id": "cs-m3-04",
+      "concept": "compile-vs-interpret",
+      "type": "mcq",
+      "level": "confident",
+      "q": "Someone says 'Python is interpreted, so no compiling ever happens.' What's the accurate correction?",
+      "options": [
+        "They're exactly right",
+        "Python skips the CPU entirely",
+        "CPython compiles your source to bytecode first, then runs that bytecode — translating happens, just as part of running",
+        "Python actually compiles to a standalone .exe every time"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "CPython compiles source to bytecode (the __pycache__ .pyc files) and then executes it, so 'interpreted' means translating happens during running, not that none happens.",
+        "wrong": "It doesn't produce a standalone binary each run, and it still ultimately runs on the CPU; the blanket 'no compiling' claim is the misconception."
+      }
+    },
+    {
+      "id": "cs-m3-05",
+      "concept": "cpu-loop",
+      "type": "short",
+      "level": "some",
+      "q": "Explain, in a sentence or two, the path from the Python you write to something a CPU can actually run.",
+      "rubric": [
+        "Starts from human-readable source code",
+        "Mentions translation to a lower level (bytecode and/or machine code), compiled ahead of time or as it runs",
+        "Ends with the CPU executing machine instructions (fetch-decode-execute)"
+      ],
+      "explain": {
+        "right": "Good answers trace source → translated to lower-level instructions → CPU executes machine code step by step.",
+        "wrong": "A weak answer says 'the computer just reads Python' without any translation step or the CPU running machine code."
+      }
+    }
+  ]
+}

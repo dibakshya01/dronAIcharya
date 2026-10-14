@@ -1,0 +1,95 @@
+{
+  "module": "vibe-m9-ship-it",
+  "track": "vibecoding",
+  "items": [
+    {
+      "id": "vibe-m9-01",
+      "concept": "git-commit",
+      "type": "mcq",
+      "level": "all",
+      "q": "What is a git commit?",
+      "options": [
+        "A secret key for your app",
+        "A deployed, live website",
+        "A message you send to the AI",
+        "A saved snapshot of your project — a save point you can return to"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Each commit records the state of your files at that moment, so you have a history and can roll back.",
+        "wrong": "It's not a chat message, a live site, or a secret — it's a local save point in your project's history."
+      }
+    },
+    {
+      "id": "vibe-m9-02",
+      "concept": "github",
+      "type": "mcq",
+      "level": "all",
+      "q": "What does GitHub add on top of git?",
+      "options": [
+        "It is the programming language your app uses",
+        "It makes your app run faster",
+        "It writes your code for you",
+        "An online, hosted copy of your repository — backup, a shareable link, and collaboration"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "GitHub hosts a remote copy of your repo so it's backed up, shareable by link, and reachable by others.",
+        "wrong": "It doesn't write code, isn't a language, and doesn't change your app's speed — it's where the repo lives online."
+      }
+    },
+    {
+      "id": "vibe-m9-03",
+      "concept": "secrets-out-of-repo",
+      "type": "mcq",
+      "level": "all",
+      "q": "Where does an API key belong?",
+      "options": [
+        "In the README so you don't forget it",
+        "In an ignored file (like .env) read at runtime — never committed to the repo",
+        "Hard-coded directly in the code",
+        "Pushed to GitHub so it's safely backed up"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Secrets live in a gitignored file and are read from the environment; the repo holds code, never the secret value.",
+        "wrong": "Hard-coding, putting it in the README, or pushing it to GitHub all expose the key to anyone who can see the repo."
+      }
+    },
+    {
+      "id": "vibe-m9-04",
+      "concept": "leaked-secret",
+      "type": "mcq",
+      "level": "some",
+      "q": "You accidentally committed an API key and pushed it to GitHub. What's the real fix?",
+      "options": [
+        "Nothing, it's fine once it's pushed",
+        "Revoke/rotate the key so the old one stops working, then issue a new one — because git history keeps the old commit",
+        "Just delete the line in a new commit — that removes it",
+        "Make the repo private and keep using the same key"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "Git history still contains the key even after you delete the line, so you must invalidate it and replace it.",
+        "wrong": "Deleting the line, doing nothing, or going private all leave the leaked key usable in history — rotate it."
+      }
+    },
+    {
+      "id": "vibe-m9-05",
+      "concept": "deploy-path-human-click",
+      "type": "short",
+      "level": "all",
+      "q": "Describe the deploy path: how does code on your machine become a public website, and who performs the final deploy click?",
+      "rubric": [
+        "Code is pushed to GitHub (version control)",
+        "A hosting platform connects to the repo, builds/runs the app, and gives a public URL",
+        "Secrets are set on the host (env vars), not in the repo",
+        "The human performs the final deploy/authorize click — dronAIcharya preps up to that point"
+      ],
+      "explain": {
+        "right": "Strong answers trace code → GitHub → host builds from the repo → public URL, with secrets on the host and the final click left to the human.",
+        "wrong": "A weak answer says 'the AI just puts it online' or forgets that the account-linked deploy step is the user's."
+      }
+    }
+  ]
+}

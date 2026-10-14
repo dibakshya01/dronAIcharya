@@ -1,0 +1,94 @@
+{
+  "module": "vibe-m4-spec-before-build",
+  "track": "vibecoding",
+  "items": [
+    {
+      "id": "vibe-m4-01",
+      "concept": "why-spec-first",
+      "type": "mcq",
+      "level": "all",
+      "q": "Why write a short spec before asking the AI to build?",
+      "options": [
+        "It is required before any code will run",
+        "It makes the AI generate code more quickly",
+        "Specs are only needed by big companies and legal teams",
+        "The AI builds fast, so if you haven't decided what you want it will build the wrong thing fast — the spec makes you decide first"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Deciding what you actually want is the hard part; a short spec settles that up front and saves hours of 'no, not like that'.",
+        "wrong": "Specs help solo beginners most, they don't speed up or gate code execution — their value is deciding intent before building."
+      }
+    },
+    {
+      "id": "vibe-m4-02",
+      "concept": "acceptance-criteria",
+      "type": "mcq",
+      "level": "all",
+      "q": "Which of these is a good acceptance criterion for a habit tracker?",
+      "options": [
+        "It should be fast and reliable",
+        "The app should look nice and modern",
+        "A user can add a habit and it appears in the list",
+        "Use the latest framework"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "It describes observable user behavior you can test yes/no: do the action, check the result.",
+        "wrong": "'Nice', 'latest framework', and 'fast/reliable' aren't checkable — they're vague wishes or tech choices, not pass/fail tests."
+      }
+    },
+    {
+      "id": "vibe-m4-03",
+      "concept": "acceptance-criteria",
+      "type": "mcq",
+      "level": "some",
+      "q": "What is the point of acceptance criteria?",
+      "options": [
+        "A list of the technologies you'll use",
+        "A design mockup of the screens",
+        "A marketing description of the app",
+        "Concrete, checkable statements of 'it works' that tell you (and the AI) when a feature is done"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "They turn a fuzzy goal into yes/no tests of user-visible behavior, so you know when to stop building a feature.",
+        "wrong": "Tech lists, mockups, and marketing copy aren't pass/fail checks of whether the thing actually works."
+      }
+    },
+    {
+      "id": "vibe-m4-04",
+      "concept": "scope-guard",
+      "type": "mcq",
+      "level": "all",
+      "q": "Your first-build spec has grown to 20 features. What's the best move?",
+      "options": [
+        "Build all 20 at once — the AI is fast enough",
+        "Cut it down to a small core you can actually finish; keeping scope small is a feature",
+        "Add a few more so it's complete",
+        "Skip the spec and just start coding"
+      ],
+      "answer": 1,
+      "explain": {
+        "right": "A small thing you finish beats a big thing you abandon; guarding scope is a deliberate strength, not a weakness.",
+        "wrong": "Piling on features (or dropping the spec) is how first builds stall — trim to a finishable core instead."
+      }
+    },
+    {
+      "id": "vibe-m4-05",
+      "concept": "acceptance-criteria",
+      "type": "short",
+      "level": "all",
+      "q": "Write one acceptance criterion for an app that lets you save short notes.",
+      "rubric": [
+        "Describes observable, user-visible behavior (an action and its result)",
+        "Is checkable yes/no (you could perform it and see pass/fail)",
+        "Ties to the app's purpose (saving/seeing a note), e.g. 'I can type a note, save it, and it still shows after I refresh'"
+      ],
+      "explain": {
+        "right": "Strong answers state an action plus the expected visible result you can test, like 'I can save a note and it reappears after refresh'.",
+        "wrong": "A weak answer is a vague wish like 'notes should be good' with nothing to check."
+      }
+    }
+  ]
+}

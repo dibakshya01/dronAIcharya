@@ -1,0 +1,22 @@
+{
+  "name": "dronaicharya",
+  "displayName": "dronAIcharya",
+  "version": "0.1.0",
+  "description": "Your AI guru: learn as you build. A guided, guardrailed teach-and-build journey across Vibecoding, Python, CS foundations, and Cybersecurity & AI Security — from an idea to a deployed, production-grade product, teaching LLMs, AI, MCP, architecture, and deployment under the hood.",
+  "author": { "name": "dibakshya01", "url": "https://github.com/dibakshya01" },
+  "homepage": "https://github.com/dibakshya01/dronAIcharya",
+  "repository": "https://github.com/dibakshya01/dronAIcharya",
+  "license": "MIT",
+  "keywords": [
+    "teaching",
+    "learning",
+    "education",
+    "vibecoding",
+    "mentor",
+    "tutor",
+    "python",
+    "cybersecurity",
+    "ai-security",
+    "mcp"
+  ]
+}

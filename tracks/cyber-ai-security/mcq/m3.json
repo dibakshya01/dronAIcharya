@@ -1,0 +1,96 @@
+{
+  "module": "sec-m3-secrets-and-keys",
+  "track": "cyber-ai-security",
+  "items": [
+    {
+      "id": "sec-m3-01",
+      "concept": "git-history-forever",
+      "type": "mcq",
+      "level": "all",
+      "q": "You committed an API key, then in the next commit you deleted the line. Is the key safe now?",
+      "options": [
+        "No — git history keeps the old commit, so the key is still recoverable and must be rotated",
+        "Only unsafe if you pushed within the last 24 hours",
+        "Yes — it's gone from the current code",
+        "Yes, as long as the repo is private"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Git history retains the committed value; deleting the line later doesn't remove it. Treat the key as leaked and rotate it.",
+        "wrong": "Deleting the line, a private repo, or the timing don't help — the value lives in history and must be revoked/rotated."
+      }
+    },
+    {
+      "id": "sec-m3-02",
+      "concept": "secret-in-repo",
+      "type": "mcq",
+      "level": "all",
+      "q": "Why is putting a key in your source code dangerous, even in a private repo?",
+      "options": [
+        "It slows the program down",
+        "It only matters for payment keys",
+        "It makes the file larger",
+        "Anyone with repo access (now or later) can read and use it, and private repos leak, fork, or get published by mistake"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "A key in the repo is readable by everyone with access and survives in history; private repos still leak, and automated scanners harvest public ones in minutes.",
+        "wrong": "It's not about file size or speed, and all keys matter — any credential grants access or costs money."
+      }
+    },
+    {
+      "id": "sec-m3-03",
+      "concept": "env-and-managers",
+      "type": "mcq",
+      "level": "all",
+      "q": "What's the right place for a secret the code needs?",
+      "options": [
+        "In the environment — a gitignored .env locally, or a secret manager/env vars in production — with the code referencing it by name",
+        "In the repo's README so collaborators can see it",
+        "In a comment at the top of the file so it's easy to find",
+        "Hard-coded in the file, but base64-encoded so it looks scrambled"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Keep the value out of the code and in the environment; the code asks for it by name. Commit a value-free .env.example to document the names.",
+        "wrong": "Base64 is encoding, not encryption — it's trivially reversible and not secret; comments and READMEs are still in the repo."
+      }
+    },
+    {
+      "id": "sec-m3-04",
+      "concept": "least-privilege-rotation",
+      "type": "mcq",
+      "level": "some",
+      "q": "Which pair of habits best limits the damage when a key eventually leaks?",
+      "options": [
+        "Use the same powerful key everywhere so there's less to manage",
+        "Make the key longer, and never tell anyone it exists",
+        "Store two copies in case one is lost",
+        "Scope the key to least privilege (only what it needs) and rotate it (replace + revoke) on any suspected leak"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Least privilege shrinks the blast radius, and rotation makes a stolen key stop working — together they make a leak survivable.",
+        "wrong": "Length and secrecy don't help once it's stolen, extra copies add exposure, and one all-powerful key maximizes the damage."
+      }
+    },
+    {
+      "id": "sec-m3-05",
+      "concept": "encoding-vs-encryption",
+      "type": "mcq",
+      "level": "confident",
+      "q": "A teammate says 'I base64-encoded the password in the config, so it's protected.' What's the correct response?",
+      "options": [
+        "Base64 is encoding, not encryption; anyone can reverse it instantly, so the secret is still exposed — move it out of the config",
+        "Great — base64 is a solid encryption step",
+        "Add a second base64 pass to make it stronger",
+        "It's fine as long as the config isn't committed"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Encoding (base64) just changes representation and is trivially reversible; it provides zero secrecy. The secret belongs in the environment, not the config.",
+        "wrong": "Base64 isn't encryption and double-encoding adds nothing; even uncommitted, a plaintext-equivalent secret in config is the wrong place."
+      }
+    }
+  ]
+}

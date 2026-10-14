@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Docs — getting started with dronAIcharya</title>
+  <meta name="description" content="Install dronAIcharya as a plugin, a skills repo, or in Cursor; the learning journey end to end; every command; and a frank FAQ.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Docs — getting started with dronAIcharya">
+  <meta property="og:description" content="Install, the journey, every command, and a frank FAQ.">
+  <meta property="og:image" content="assets/social-card.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>(function(){try{var t=localStorage.getItem('dron-theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="dronAIcharya — home">
+        <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+          <circle cx="20" cy="12.5" r="7" stroke-width="2"/>
+          <circle cx="20" cy="12.5" r="2.6" stroke="none" style="fill:var(--accent)"/>
+          <path d="M5 27 C 9 21, 13 17, 17.3 13.9" stroke-width="2.4" stroke-linecap="round"/>
+          <path d="M17.3 13.9 L 13 14.6 M17.3 13.9 L 14.9 18.3" stroke-width="2.4" stroke-linecap="round"/>
+        </svg>
+        <span>dron<span class="wm-ai">AI</span>charya</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="eli5.html">For everyone</a></li>
+        <li><a href="docs.html" aria-current="page">Docs</a></li>
+        <li><a href="architecture.html">Architecture</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-tools">
+        <a class="icon-btn" href="https://github.com/dibakshya01/dronAIcharya" target="_blank" rel="noopener" aria-label="dronAIcharya on GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.57.1.78-.25.78-.55v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.48.11-3.08 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.6.23 2.78.11 3.08.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.4-5.25 5.69.41.36.78 1.06.78 2.14v3.17c0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5Z"/></svg>
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8"/></svg>
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 7 7 0 1 0 20 14.5Z"/></svg>
+        </button>
+        <button class="icon-btn nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="page-hero" aria-labelledby="docs-title">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="container" style="position:relative;z-index:1;max-width:48rem">
+        <span class="eyebrow">Docs · getting started</span>
+        <h1 id="docs-title">From zero to your first lesson</h1>
+        <p class="lead">Install it, understand the journey, learn the handful of commands, and skim the honest FAQ. For the full step-by-step install (including Cursor), see <a href="https://github.com/dibakshya01/dronAIcharya/blob/main/INSTALL.md" target="_blank" rel="noopener">INSTALL.md</a> in the repo.</p>
+      </div>
+    </section>
+
+    <!-- INSTALL -->
+    <section class="section--tight" id="install" aria-labelledby="install-h">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Install</span>
+          <h2 id="install-h">Three ways to run it</h2>
+          <p>When in doubt: the <strong>plugin</strong> for Claude Code, the <strong>skills repo</strong> for Cursor or for hacking on the internals. dronAIcharya never installs itself from a web page — you run the command.</p>
+        </div>
+
+        <div class="prose" style="max-width:52rem" data-reveal>
+          <h3>1 · As a Claude Code plugin <span class="tag">recommended</span></h3>
+          <p>Everything included: skills, teaching subagents, the anti-drift guardrail hooks, and the optional MCP backend.</p>
+        </div>
+        <div class="cmd" style="max-width:52rem;margin-top:16px" data-reveal>
+          <div class="cmd-head">
+            <span class="cmd-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="cmd-title">in a Claude Code session</span>
+            <button class="copy-btn" type="button" data-copy-target="#d-plugin" style="margin-left:auto">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="copy-label">Copy</span>
+            </button>
+          </div>
+          <div class="cmd-body">
+            <pre id="d-plugin"><code>/plugin marketplace add dibakshya01/dronAIcharya
+/plugin install dronaicharya@dronaicharya
+/dronaicharya:start</code></pre>
+          </div>
+        </div>
+        <div class="prose" style="max-width:52rem;margin-top:14px" data-reveal>
+          <p>Or from your shell: <code>claude plugin marketplace add dibakshya01/dronAIcharya</code> then <code>claude plugin install dronaicharya@dronaicharya --scope user</code>. Update with <code>claude plugin update dronaicharya@dronaicharya</code>; uninstall with <code>claude plugin uninstall dronaicharya@dronaicharya</code> (your <code>.dronacharya/</code> journey files stay in your projects). Requires a Claude Code recent enough to support plugins — check with <code>claude --version</code>.</p>
+        </div>
+
+        <div class="prose" style="max-width:52rem;margin-top:36px" data-reveal>
+          <h3>2 · As a skills repo <span class="tag">transparent / hackable</span></h3>
+          <p>The easiest route points Claude Code straight at the folder, hooks included:</p>
+        </div>
+        <div class="cmd" style="max-width:52rem;margin-top:16px" data-reveal>
+          <div class="cmd-head">
+            <span class="cmd-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="cmd-title">in your shell</span>
+            <button class="copy-btn" type="button" data-copy-target="#d-skills" style="margin-left:auto">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="copy-label">Copy</span>
+            </button>
+          </div>
+          <div class="cmd-body">
+            <pre id="d-skills"><code>git clone https://github.com/dibakshya01/dronAIcharya
+claude --plugin-dir ./dronAIcharya
+<span class="cmt"># then run /dronaicharya:start (or /start, depending on your version)</span></code></pre>
+          </div>
+        </div>
+        <div class="prose" style="max-width:52rem;margin-top:14px" data-reveal>
+          <p>Prefer the skills available everywhere? Run <code>bash dronAIcharya/scripts/sync-to-local.sh</code> to copy <code>skills/</code> into <code>~/.claude/skills/</code> and <code>agents/</code> into <code>~/.claude/agents/</code>. Note: a bare copy like this does <strong>not</strong> install the guardrail hooks, so teaching-mode persistence is best-effort — the <code>start</code> / <code>continue</code> skills still carry the teaching contract in-content. Use <code>--plugin-dir</code> or the plugin install to get hooks.</p>
+        </div>
+
+        <div class="prose" style="max-width:52rem;margin-top:36px" data-reveal>
+          <h3>3 · In Cursor</h3>
+          <p>Cursor reads Claude-style skills, agents and <code>AGENTS.md</code>:</p>
+        </div>
+        <div class="cmd" style="max-width:52rem;margin-top:16px" data-reveal>
+          <div class="cmd-head">
+            <span class="cmd-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="cmd-title">in your shell</span>
+            <button class="copy-btn" type="button" data-copy-target="#d-cursor" style="margin-left:auto">
+              <svg class="ic-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+              <span class="copy-label">Copy</span>
+            </button>
+          </div>
+          <div class="cmd-body">
+            <pre id="d-cursor"><code>git clone https://github.com/dibakshya01/dronAIcharya
+bash dronAIcharya/scripts/sync-to-local.sh --cursor
+<span class="cmt"># then open the project in Cursor and ask it to run the start skill</span></code></pre>
+          </div>
+        </div>
+        <div class="callout" style="max-width:52rem;margin-top:18px" data-reveal>
+          <span class="ci" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.7 7.9-9-5a1.4 1.4 0 0 0-1.4 0l-9 5A1.4 1.4 0 0 0 2 9.1v5.8a1.4 1.4 0 0 0 .7 1.2l9 5a1.4 1.4 0 0 0 1.4 0l9-5a1.4 1.4 0 0 0 .7-1.2V9.1a1.4 1.4 0 0 0-.8-1.2Z"/><path d="M12 22V12M2.3 7.9 12 12l9.7-4.1"/></svg></span>
+          <p><strong>Honest caveat:</strong> Claude Code's guardrail hooks do not run in Cursor (a different hook system), so anti-drift / teaching-mode persistence is absent or best-effort there. You still get the full tutor and all four tracks. MCP wiring also differs — follow Cursor's MCP docs for the optional purple-sparrow backend.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section class="section section--alt" id="journey" aria-labelledby="journey-h">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">The journey</span>
+          <h2 id="journey-h">What happens, start to finish</h2>
+          <p>One linear, guardrailed flow. Escape hatches are honored at every point — "pause", "skip ahead", "just fix this quickly", "ELI5", "go deeper", "quiz me", "where am I?".</p>
+        </div>
+        <div class="steps">
+          <div class="step" data-reveal><span class="num" aria-hidden="true"></span><div><h3>Greet &amp; start</h3><p>Paste the repo link, pick an install path, run <code>/dronaicharya:start</code>. A short intro explains what this is and what will happen.</p></div></div>
+          <div class="step" data-reveal><span class="num" aria-hidden="true"></span><div><h3>Persona &amp; cadence</h3><p>Choose a teacher archetype, then how often it stops to teach and check — Thorough, Balanced, or Fast.</p></div></div>
+          <div class="step" data-reveal><span class="num" aria-hidden="true"></span><div><h3>Setup check</h3><p>API key? Editor web / MCP enabled? The <code>tokens</code> and <code>setup</code> skills help if needed, honest about the parts outside the tool's control.</p></div></div>
+          <div class="step" data-reveal><span class="num" aria-hidden="true"></span><div><h3>Track &amp; level</h3><p>Pick Vibecoding, Python, CS, or Cyber &amp; AI Security, and your level: never-coded, some, or confident.</p></div></div>
+          <div class="step" data-reveal><span class="num" aria-hidden="true"></span><div><h3>Idea &amp; plan</h3><p>Bring your own idea or pick a simple-first starter, then co-author a combined BUILD + LEARN plan you approve.</p></div></div>
+          <div class="step" data-reveal><span class="num" aria-hidden="true"></span><div><h3>Execute, step by step</h3><p>Teach → MCQ check → decide the tradeoffs together → build a layer (tracer-bullet first) → explain under the hood → check → advance.</p></div></div>
+          <div class="step" data-reveal><span class="num" aria-hidden="true"></span><div><h3>Production path</h3><p>Architecture, backend (purple-sparrow optional), payments, GitHub, deployment prep — up to your own clicks.</p></div></div>
+          <div class="step" data-reveal><span class="num" aria-hidden="true"></span><div><h3>Finish</h3><p>An "under the hood" recap, a formative mastery review, and what to learn next. Resume anytime with <code>/dronaicharya:continue</code>.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMANDS -->
+    <section class="section" id="commands" aria-labelledby="commands-h">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">Commands</span>
+          <h2 id="commands-h">The skills you can pull any time</h2>
+          <p>As a plugin, each is namespaced <code>/dronaicharya:&lt;name&gt;</code>. The linear journey is driven by one orchestrator; you can also invoke any of these on demand.</p>
+        </div>
+
+        <div class="grid grid-3" data-reveal>
+          <div class="card tilt">
+            <div class="tag">Flow</div>
+            <ul class="prose" style="list-style:none;padding:0;margin-top:12px;display:grid;gap:8px;font-size:.95rem">
+              <li><code>start</code> — begin a journey</li>
+              <li><code>plan</code> — co-author the BUILD + LEARN plan</li>
+              <li><code>continue</code> — resume where you left off</li>
+              <li><code>status</code> — progress, pause, disable</li>
+            </ul>
+          </div>
+          <div class="card tilt">
+            <div class="tag">Teaching</div>
+            <ul class="prose" style="list-style:none;padding:0;margin-top:12px;display:grid;gap:8px;font-size:.95rem">
+              <li><code>teach</code> — explain the current concept</li>
+              <li><code>eli5</code> — explain it very simply</li>
+              <li><code>deep-dive</code> — go further</li>
+              <li><code>quiz</code> — check understanding</li>
+              <li><code>under-the-hood</code> — how it really works</li>
+            </ul>
+          </div>
+          <div class="card tilt">
+            <div class="tag">Build / SDLC</div>
+            <ul class="prose" style="list-style:none;padding:0;margin-top:12px;display:grid;gap:8px;font-size:.95rem">
+              <li><code>spec</code> — spec-driven development</li>
+              <li><code>architect</code> — system design &amp; tradeoffs</li>
+              <li><code>build-step</code> — build a layer</li>
+              <li><code>backend</code> — the optional real backend</li>
+              <li><code>payments</code> · <code>deploy</code> · <code>ship-github</code></li>
+            </ul>
+          </div>
+        </div>
+        <div class="grid grid-2" style="margin-top:20px;max-width:none" data-reveal>
+          <div class="card tilt">
+            <div class="tag">Enablement</div>
+            <ul class="prose" style="list-style:none;padding:0;margin-top:12px;display:grid;gap:8px;font-size:.95rem">
+              <li><code>tokens</code> — get &amp; safely paste an AI API token (you paste it into your editor, never into the chat)</li>
+              <li><code>setup</code> — enable web / MCP; walk the optional purple-sparrow backend</li>
+            </ul>
+          </div>
+          <div class="card tilt" style="background:var(--surface-2)">
+            <div class="tag">State</div>
+            <p style="margin-top:12px;font-size:.95rem;color:var(--muted)">Per-project journey lives in <code>./.dronacharya/</code> (plan, progress, journal — gitignored, no secrets). Global mastery lives in <code>${CLAUDE_PLUGIN_DATA}/profile.json</code> so it carries across projects.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--alt" id="faq" aria-labelledby="faq-h">
+      <div class="container">
+        <div class="section-head" data-reveal>
+          <span class="eyebrow">FAQ</span>
+          <h2 id="faq-h">Honest answers</h2>
+        </div>
+        <div class="faq" style="max-width:52rem" data-reveal>
+          <details>
+            <summary>Do I need to know how to code already?</summary>
+            <div class="faq-body">No. There's a track and a level for absolute beginners, and it hand-holds the first steps — getting an API token, enabling web / MCP, basic GitHub — broken down as simply as you need, with ELI5 on demand. See the <a href="eli5.html">plain-language page</a>.</div>
+          </details>
+          <details>
+            <summary>Will it just write all the code for me?</summary>
+            <div class="faq-body">That's explicitly not the goal. It strongly steers you to understand what's being built, requiring a decision from you at each decision of consequence. But it always obeys "pause / skip / just do it" — you're in control.</div>
+          </details>
+          <details>
+            <summary>Does it send my data or API key anywhere?</summary>
+            <div class="faq-body">No telemetry. Your API key stays on your machine — it never sees or transmits it — and it makes no network calls except the web/doc fetches a lesson explicitly performs. Fetched content is treated as data, not instructions.</div>
+          </details>
+          <details>
+            <summary>What's different in Cursor?</summary>
+            <div class="faq-body">You get the full tutor, all four tracks, and the skills and agents. But Claude Code's guardrail hooks may not run in Cursor, so teaching-mode persistence and the anti-drift nudge are best-effort or absent — a materially lighter, more drift-prone experience.</div>
+          </details>
+          <details>
+            <summary>Is the CS track a full computer-science degree?</summary>
+            <div class="faq-body">No. It's undergraduate <em>foundations</em> and literacy — bits and memory, data structures, Big-O, recursion, OS / networking / database basics, how the web works. No formal proofs, automata, or discrete-math depth.</div>
+          </details>
+          <details>
+            <summary>Do the quizzes certify me?</summary>
+            <div class="faq-body">No. Mastery checks are formative self-checks that help the learning stick and gate advancing. They are not a certificate.</div>
+          </details>
+          <details>
+            <summary>Do I have to set up the purple-sparrow backend?</summary>
+            <div class="faq-body">No — it's entirely optional and advanced. dronAIcharya works fully without it, falling back to conceptual teaching or a simple local store. If you want a real backend to learn on, the <code>setup</code> skill walks you through it. Note purple-sparrow is alpha and shouldn't hold real or regulated data yet.</div>
+          </details>
+          <details>
+            <summary>How do I pause or uninstall?</summary>
+            <div class="faq-body">Run <code>/dronaicharya:status</code> to pause teaching (all hooks go quiet) or see how to disable the plugin. Uninstall with <code>claude plugin uninstall dronaicharya@dronaicharya</code>; your <code>.dronacharya/</code> journey files stay in your projects.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-band" data-reveal>
+          <h2>Ready to take aim?</h2>
+          <p>Install, pick a teacher and a track, and bring an idea.</p>
+          <div class="hero-cta">
+            <a class="btn btn--primary btn--lg" href="index.html#install">Install dronAIcharya</a>
+            <a class="btn btn--ghost btn--lg" href="architecture.html">See how it's built</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html" aria-label="dronAIcharya — home">
+            <svg class="mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" aria-hidden="true">
+              <circle cx="20" cy="12.5" r="7" stroke-width="2"/>
+              <circle cx="20" cy="12.5" r="2.6" stroke="none" style="fill:var(--accent)"/>
+              <path d="M5 27 C 9 21, 13 17, 17.3 13.9" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M17.3 13.9 L 13 14.6 M17.3 13.9 L 14.9 18.3" stroke-width="2.4" stroke-linecap="round"/>
+            </svg>
+            <span>dron<span class="wm-ai">AI</span>charya</span>
+          </a>
+          <p>Your AI guru — learn as you build. A Claude Code plugin (also a skills repo, portable to Cursor) that teaches you while building real software with you.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="eli5.html">For everyone</a></li>
+            <li><a href="docs.html">Docs</a></li>
+            <li><a href="architecture.html">Architecture</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get started</h4>
+          <ul>
+            <li><a href="index.html#install">Install</a></li>
+            <li><a href="docs.html#journey">The journey</a></li>
+            <li><a href="docs.html#commands">Commands</a></li>
+            <li><a href="docs.html#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Project</h4>
+          <ul>
+            <li><a href="https://github.com/dibakshya01/dronAIcharya" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="https://github.com/dibakshya01/dronAIcharya/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a></li>
+            <li><a href="https://github.com/dibakshya01/dronAIcharya/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a></li>
+            <li><a href="https://github.com/dibakshya01/dronAIcharya/blob/main/LICENSE" target="_blank" rel="noopener">MIT License</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>MIT &copy; <span id="year">2026</span> dibakshya01 · No telemetry · Your API key never leaves your machine.</span>
+        <span class="tagline">Built to teach. If it ever stops teaching and starts just doing — say "teach me".</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="copy-live" class="visually-hidden" role="status" aria-live="polite"></div>
+  <script src="assets/main.js" defer></script>
+</body>
+</html>

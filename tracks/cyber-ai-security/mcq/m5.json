@@ -1,0 +1,96 @@
+{
+  "module": "sec-m5-owasp-top10-part2",
+  "track": "cyber-ai-security",
+  "items": [
+    {
+      "id": "sec-m5-01",
+      "concept": "authentication-failures",
+      "type": "mcq",
+      "level": "all",
+      "q": "Which is an authentication failure (OWASP A07)?",
+      "options": [
+        "Letting users pick a long passphrase",
+        "Expiring sessions after inactivity",
+        "Offering multi-factor authentication",
+        "Storing passwords in plain text and allowing unlimited login guesses with no lockout"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Plaintext passwords plus unlimited guessing are classic authentication failures; fixes are password-specific hashing, rate limiting/lockout, and MFA.",
+        "wrong": "Long passphrases, MFA, and session expiry are all good practices, not failures."
+      }
+    },
+    {
+      "id": "sec-m5-02",
+      "concept": "password-storage",
+      "type": "mcq",
+      "level": "some",
+      "q": "How should user passwords be stored?",
+      "options": [
+        "As a fast plain SHA-256 hash with no salt",
+        "In plain text, but in a private database",
+        "Hashed with a slow, salted, password-specific algorithm (e.g. bcrypt or argon2)",
+        "Encrypted with the same key used for everything else"
+      ],
+      "answer": 2,
+      "explain": {
+        "right": "Use a slow, salted algorithm built for passwords (bcrypt/argon2) so stolen hashes resist cracking; never store plaintext.",
+        "wrong": "Plaintext is indefensible, a shared reversible key is risky, and fast unsalted SHA-256 is crackable at scale."
+      }
+    },
+    {
+      "id": "sec-m5-03",
+      "concept": "security-misconfiguration",
+      "type": "mcq",
+      "level": "all",
+      "q": "Which best describes security misconfiguration (OWASP A02)?",
+      "options": [
+        "A user choosing a weak password",
+        "A bug in the application's logic",
+        "A slow database query",
+        "An insecure setup — e.g. debug mode on in production, default passwords unchanged, or a storage bucket left public"
+      ],
+      "answer": 3,
+      "explain": {
+        "right": "Misconfiguration is an insecure setup rather than a code bug: defaults, verbose errors, open storage, unused features left on.",
+        "wrong": "It's distinct from app logic bugs, weak user passwords (A07), and performance issues."
+      }
+    },
+    {
+      "id": "sec-m5-04",
+      "concept": "supply-chain",
+      "type": "mcq",
+      "level": "all",
+      "q": "Your code is clean, but you use a library with a known critical vulnerability. Under OWASP 2025 this is:",
+      "options": [
+        "Software supply chain failure (A03) — you inherit the security of every dependency, so you must track and update them",
+        "Not your problem — it's the library author's fault",
+        "Only a risk if you call that exact function",
+        "Safe because the library is popular"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Dependencies are part of your attack surface; a vulnerable library is your risk. Use lockfiles, dependency alerts/SCA, and update promptly.",
+        "wrong": "Blame doesn't reduce exposure, popularity doesn't equal safety, and a vulnerable dependency can be reachable in ways you didn't expect."
+      }
+    },
+    {
+      "id": "sec-m5-05",
+      "concept": "fail-closed-logging",
+      "type": "mcq",
+      "level": "confident",
+      "q": "Which pairing of a 2025 OWASP risk with its defense is correct?",
+      "options": [
+        "Security Logging and Alerting Failures → log security-relevant events AND alert on the suspicious ones so breaches don't go unnoticed",
+        "Insecure Design → add the security checks after launch once the design is proven",
+        "Cryptographic Failures → invent your own encryption algorithm for extra secrecy",
+        "Mishandling of Exceptional Conditions → on an error, fail open and let the request through to avoid annoying users"
+      ],
+      "answer": 0,
+      "explain": {
+        "right": "Logging without alerting lets breaches sit unnoticed; you log auth/access events and alert on the suspicious ones (A09).",
+        "wrong": "Never roll your own crypto (A04), fail closed not open on errors (A10), and design security in early — some flaws can't be patched later (A06)."
+      }
+    }
+  ]
+}
