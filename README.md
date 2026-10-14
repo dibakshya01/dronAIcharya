@@ -1,14 +1,20 @@
 <div align="center">
 
-# 🏹 dronAIcharya
+# dronAIcharya
 
-### Your AI guru — *learn as you build.*
+### Your AI guru — *learn as you build*
 
-**dronAIcharya turns Claude Code (or Cursor) into a patient master-teacher that builds real, production-grade software *with* you — and makes sure you actually understand what you built.**
+**Turns Claude Code (or Cursor) into a patient master-teacher that builds real, production-grade software _with_ you — and makes sure you actually understand what you built.**
 
-LLMs · AI · MCP · development · vibecoding · architecture · system design · tradeoffs · GitHub · deployment — taught *before, during, and after* you build, with knowledge checks so it sticks.
+[![License: MIT](https://img.shields.io/badge/license-MIT-0A1F44?style=flat-square)](LICENSE)
+&nbsp;[![Claude Code plugin](https://img.shields.io/badge/Claude_Code-plugin-2563EB?style=flat-square)](#-install-pick-one)
+&nbsp;[![Live demo](https://img.shields.io/badge/demo-live-2563EB?style=flat-square)](https://dibakshya01.github.io/dronAIcharya/)
+&nbsp;[![Tracks](https://img.shields.io/badge/tracks-4-0A1F44?style=flat-square)](#-four-tracks)
+&nbsp;[![Personas](https://img.shields.io/badge/personas-4-0A1F44?style=flat-square)](#-why-this-exists)
 
-[Install](#-install-pick-one) · [What you'll learn](#-four-tracks) · [How it works](#-how-it-works) · [Honest limits](#-honest-about-what-it-is-and-isnt)
+LLMs · AI · MCP · development · vibecoding · architecture · system design · tradeoffs · GitHub · deployment — taught _before, during, and after_ you build, with knowledge checks so it sticks.
+
+[**Install**](#-install-pick-one) &nbsp;·&nbsp; [**What you'll learn**](#-four-tracks) &nbsp;·&nbsp; [**How it works**](#-how-it-works) &nbsp;·&nbsp; [**Honest limits**](#-honest-about-what-it-is-and-isnt)
 
 </div>
 
