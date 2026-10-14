@@ -323,8 +323,8 @@
 
     function colorFor() {
       return effectiveTheme() === "dark"
-        ? "rgba(244,166,46,"
-        : "rgba(231,138,30,";
+        ? "rgba(96,165,250,"
+        : "rgba(37,99,235,";
     }
 
     function size() {

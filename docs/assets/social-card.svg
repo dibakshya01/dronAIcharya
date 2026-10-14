@@ -4,7 +4,7 @@
     EXPORT NOTES
       • Fonts are converted to system fallbacks here so the SVG renders without a
         network fetch. For a pixel-perfect PNG that matches the site, install
-        "Space Grotesk" (headline) + "Inter" (body) locally first, then export.
+        "Inter" locally first, then export.
       • To rasterize:
           rsvg-convert -w 1200 -h 630 social-card.svg -o social-card.png
           # or: npx -y sharp-cli -i social-card.svg -o social-card.png
@@ -14,49 +14,54 @@
   -->
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#111327"/>
-      <stop offset="1" stop-color="#0B0C17"/>
+      <stop stop-color="#0B1630"/>
+      <stop offset="1" stop-color="#0A1226"/>
     </linearGradient>
-    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientTransform="translate(250 180) rotate(35) scale(420 360)" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#3C3F86" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#3C3F86" stop-opacity="0"/>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientTransform="translate(230 150) rotate(35) scale(460 380)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#388BFD" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#388BFD" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientTransform="translate(980 470) rotate(-40) scale(430 360)" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#F4A62E" stop-opacity="0.42"/>
-      <stop offset="1" stop-color="#F4A62E" stop-opacity="0"/>
+    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientTransform="translate(1000 500) rotate(-40) scale(460 380)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2563EB" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#2563EB" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lens" cx="0.5" cy="0.46" r="0.62" gradientUnits="objectBoundingBox">
+      <stop stop-color="#60A5FA" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#60A5FA" stop-opacity="0"/>
     </radialGradient>
   </defs>
 
   <rect width="1200" height="630" fill="url(#bg)"/>
   <rect width="1200" height="630" fill="url(#glowA)"/>
   <rect width="1200" height="630" fill="url(#glowB)"/>
-  <rect x="6" y="6" width="1188" height="618" rx="28" stroke="#282B45" stroke-width="2"/>
+  <rect x="6" y="6" width="1188" height="618" rx="28" stroke="#22304F" stroke-width="2"/>
 
-  <!-- the arc of aim sweeping toward the target on the right -->
-  <path d="M90 560 C 420 470, 720 430, 980 250" stroke="#F4A62E" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.9"/>
-  <g transform="translate(980 250)">
-    <circle r="78" stroke="#3C3F86" stroke-width="4"/>
-    <circle r="50" stroke="#4F54A8" stroke-width="4"/>
-    <circle r="26" stroke="#F4A62E" stroke-width="5"/>
-    <circle r="9" fill="#F4A62E"/>
+  <!-- precision lens on the right -->
+  <g transform="translate(975 300)">
+    <circle r="150" fill="url(#lens)"/>
+    <circle r="118" stroke="#6E8CC0" stroke-width="3.5"/>
+    <circle r="78" stroke="#3B82F6" stroke-width="4.5"/>
+    <circle r="40" stroke="#9DC0FF" stroke-width="3.5"/>
+    <circle r="11" fill="#60A5FA"/>
+    <path d="M0 -150v26M0 124v26M-150 0h26M124 0h26" stroke="#3B82F6" stroke-width="3.5" stroke-linecap="round"/>
   </g>
 
   <!-- wordmark + tagline -->
   <g transform="translate(90 190)">
-    <text x="0" y="0" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="92" letter-spacing="-3">
-      <tspan fill="#ECEAF2">dron</tspan><tspan fill="#F4A62E">AI</tspan><tspan fill="#ECEAF2">charya</tspan>
+    <text x="0" y="0" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="92" letter-spacing="-3">
+      <tspan fill="#EAF0FB">dron</tspan><tspan fill="#60A5FA">AI</tspan><tspan fill="#EAF0FB">charya</tspan>
     </text>
-    <text x="4" y="66" font-family="'Space Grotesk','Helvetica Neue',Arial,sans-serif" font-weight="500" font-size="40" fill="#C9CCE6" letter-spacing="-1">
+    <text x="4" y="66" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-weight="600" font-size="40" fill="#C6D6F2" letter-spacing="-1">
       Your AI guru — learn as you build.
     </text>
-    <text x="4" y="150" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-weight="400" font-size="27" fill="#A4A7BE">
+    <text x="4" y="150" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-weight="400" font-size="27" fill="#9FB2D6">
       <tspan x="4" dy="0">A Claude Code plugin that teaches you while it builds</tspan>
       <tspan x="4" dy="40">real software with you — and checks that you get it.</tspan>
     </text>
     <g transform="translate(4 250)">
-      <rect width="400" height="52" rx="26" fill="#F4A62E"/>
-      <text x="200" y="34" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="22" fill="#141524">/dronaicharya:start</text>
-      <text x="430" y="34" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-weight="500" font-size="20" fill="#717592">MIT · No telemetry</text>
+      <rect width="400" height="52" rx="26" fill="#2563EB"/>
+      <text x="200" y="34" text-anchor="middle" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-weight="700" font-size="22" fill="#FFFFFF">/dronaicharya:start</text>
+      <text x="430" y="34" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-weight="500" font-size="20" fill="#8294B8">MIT · No telemetry</text>
     </g>
   </g>
 </svg>

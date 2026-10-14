@@ -1,11 +1,10 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="dronAIcharya mark: an arrow's arc meeting a target">
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="dronAIcharya mark: a precision lens">
   <title>dronAIcharya</title>
-  <rect x="2" y="2" width="60" height="60" rx="16" fill="#15172A"/>
-  <!-- target reticle -->
-  <circle cx="40" cy="26" r="13" stroke="#3C3F86" stroke-width="2.4"/>
-  <circle cx="40" cy="26" r="7.6" stroke="#F4A62E" stroke-width="2.4"/>
-  <circle cx="40" cy="26" r="2.7" fill="#F4A62E"/>
-  <!-- the arrow's arc, drawn into the bullseye -->
-  <path d="M12 54 C 18 44, 24 36, 33.5 29.4" stroke="#F4A62E" stroke-width="3.2" stroke-linecap="round" fill="none"/>
-  <path d="M33.5 29.4 L 26.8 30.2 M33.5 29.4 L 30.8 36" stroke="#F4A62E" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#0B1E3C"/>
+  <!-- concentric precision lens -->
+  <circle cx="32" cy="32" r="21" stroke="#AFC6E8" stroke-width="2.4"/>
+  <circle cx="32" cy="32" r="11.5" stroke="#3B82F6" stroke-width="2.6"/>
+  <circle cx="32" cy="32" r="4.4" fill="#3B82F6"/>
+  <!-- reticle ticks -->
+  <path d="M32 4.5v6M32 53.5v6M4.5 32h6M53.5 32h6" stroke="#3B82F6" stroke-width="2.6" stroke-linecap="round"/>
 </svg>
